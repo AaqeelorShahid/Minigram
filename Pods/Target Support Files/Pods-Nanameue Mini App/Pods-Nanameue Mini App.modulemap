@@ -1,0 +1,6 @@
+framework module Pods_Nanameue_Mini_App {
+  umbrella header "Pods-Nanameue Mini App-umbrella.h"
+
+  export *
+  module * { export * }
+}
