@@ -15,7 +15,7 @@ class CustomTextField: UITextField {
         setHeight(50)
         
         let innerPadding = UIView()
-        innerPadding.setDimensions(height: 50, width: 8)
+        innerPadding.setDimensions(height: 50, width: 12)
         leftView = innerPadding
         leftViewMode = .always
         
@@ -28,7 +28,6 @@ class CustomTextField: UITextField {
         layer.borderWidth = 1
         
         attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [.foregroundColor: UIColor.systemGray])
-
     }
     
     required init?(coder: NSCoder) {

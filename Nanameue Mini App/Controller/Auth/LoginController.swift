@@ -20,10 +20,7 @@ class LoginController: UIViewController {
     
     private let titleLabel: UILabel = {
        let label = UILabel()
-        label.text = "Connect with friends and family like never before with Minigram"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        label.textAlignment = .center
-        label.numberOfLines = -1
+        label.defaultTitleStyle(titleString: "Connect with friends and family like never before with Minigram")
         return label
     }()
     
@@ -48,6 +45,7 @@ class LoginController: UIViewController {
         button.layer.cornerRadius = 25
         button.isUserInteractionEnabled = true
         button.setHeight(55)
+        button.addTarget(self, action: #selector(loginBtnPressed), for: .touchUpInside)
         return button
     }()
     
@@ -55,6 +53,7 @@ class LoginController: UIViewController {
         let button = UIButton(type: .system)
         button.attributedText(firstString: "Don't have an account? ", secondString: "Sign Up")
         button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(noAccountBtnPressed), for: .touchUpInside)
         return button
     }()
     
@@ -87,6 +86,18 @@ class LoginController: UIViewController {
         
         view.addSubview(signupLabelButton)
         signupLabelButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 16, paddingRight: 16)
+    }
+    
+    
+    //MARK: - Actions
+    
+    @objc func loginBtnPressed() {
+        print("login btn pressed")
+    }
+    
+    @objc func noAccountBtnPressed() {
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
 }

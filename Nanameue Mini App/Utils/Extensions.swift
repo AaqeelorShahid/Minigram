@@ -24,6 +24,25 @@ extension UIButton {
        
         setAttributedTitle(attributedFirstText, for: .normal)
     }
+    
+    func defaultButtonStyle(title: String, backgroundColorString: String){
+        backgroundColor = UIColor(named: backgroundColorString)
+        setTitle(title, for: .normal)
+        tintColor = .white
+        titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        layer.cornerRadius = 25
+        isUserInteractionEnabled = true
+        setHeight(55)
+    }
+}
+
+extension UILabel {
+    func defaultTitleStyle(titleString: String){
+        text = titleString
+        font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        textAlignment = .center
+        numberOfLines = -1
+    }
 }
 
 // Below extenson basically it's a class which add constrains to views
