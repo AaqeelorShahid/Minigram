@@ -11,6 +11,8 @@ import UIKit
 class RegistrationController: UIViewController {
     //MARK: - Properties
     
+    private var viewModel = RegistationViewModel()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.defaultTitleStyle(titleString: "Create your account")
@@ -93,7 +95,31 @@ class RegistrationController: UIViewController {
         backToLoginBtn.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 12)
     }
     
+
+    func setNotificationObserverInField() {
+        emailTextField.addTarget(self, action: #selector(textChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textChange), for: .editingChanged)
+        nameField.addTarget(self, action: #selector(textChange), for: .editingChanged)
+        usernameField.addTarget(self, action: #selector(textChange), for: .editingChanged)
+    }
+    
+    
     //MARK: - Actions
+    
+    @objc func textChange(sender: UITextField){
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else if sender == passwordTextField {
+            viewModel.password = sender.text
+        } else if sender == nameField {
+            viewModel.name = sender.text
+        } else {
+            viewModel.username = sender.text
+        }
+        
+        signupBtn.backgroundColor = viewModel.btnBackgound
+        signupBtn.isEnabled = viewModel.isValid
+    }
     
     @objc func signupBtnPressed() {
         

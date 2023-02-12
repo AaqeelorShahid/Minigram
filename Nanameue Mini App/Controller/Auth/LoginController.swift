@@ -12,6 +12,8 @@ class LoginController: UIViewController {
     
     //MARK: - Properties
     
+    private var viewModel =  LoginViewModel()
+    
     private let iconImageView: UIImageView = {
         let imageview = UIImageView(image: UIImage(named: "AppIcon"))
         imageview.contentMode = .scaleAspectFill
@@ -19,7 +21,7 @@ class LoginController: UIViewController {
     }()
     
     private let titleLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.defaultTitleStyle(titleString: "Connect with friends and family like never before with Minigram")
         return label
     }()
@@ -38,12 +40,12 @@ class LoginController: UIViewController {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(named: "main_color")
+        button.backgroundColor = UIColor(named: "sub_color")
+        button.isEnabled = false
         button.setTitle("Log in", for: .normal)
         button.tintColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.layer.cornerRadius = 25
-        button.isUserInteractionEnabled = true
         button.setHeight(55)
         button.addTarget(self, action: #selector(loginBtnPressed), for: .touchUpInside)
         return button
@@ -60,7 +62,8 @@ class LoginController: UIViewController {
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
-         initUI()
+        initUI()
+        setNotificationObserverInField()
     }
     
     //MARK: - Helper functions
@@ -73,7 +76,7 @@ class LoginController: UIViewController {
         iconImageView.centerX(inView: view)
         iconImageView.setDimensions(height: 50, width: 50)
         iconImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 16)
-         
+        
         view.addSubview(titleLabel)
         titleLabel.anchor(top: iconImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 48, paddingLeft: 16, paddingRight: 16)
         
@@ -89,7 +92,23 @@ class LoginController: UIViewController {
     }
     
     
+    func setNotificationObserverInField() {
+        emailTextField.addTarget(self, action: #selector(textChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textChange), for: .editingChanged)
+    }
+    
     //MARK: - Actions
+    
+    @objc func textChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = emailTextField.text
+        } else {
+            viewModel.password = passwordTextField.text
+        }
+        
+        loginButton.backgroundColor = viewModel.btnBackgound
+        loginButton.isEnabled = viewModel.isValid
+    }
     
     @objc func loginBtnPressed() {
         print("login btn pressed")
