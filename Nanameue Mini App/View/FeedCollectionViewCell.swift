@@ -113,7 +113,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         postedTimeStamp.anchor(top: postImage.bottomAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 8)
         
         addSubview(separatorView)
-        separatorView.anchor(top: likeButton.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, height: 1.5)
+        separatorView.anchor(top: likeButton.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingBottom: 12, height: 1)
     }
     
     required init?(coder: NSCoder) {

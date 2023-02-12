@@ -111,7 +111,19 @@ class LoginController: UIViewController {
     }
     
     @objc func loginBtnPressed() {
-        print("login btn pressed")
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        AuthenticationService.loginUser(withEmail: email, password: password) { result, err in
+            
+            if let error = err {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            
+            self.dismiss(animated: true)
+        
+        }
     }
     
     @objc func noAccountBtnPressed() {

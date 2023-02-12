@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+
 
 class MainTabController: UITabBarController {
     
@@ -14,9 +16,33 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        checkCurrentUser()
     }
     
-    //Assinging view controllers in tab
+    // MARK: - Helper functions
+    
+    func checkCurrentUser() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let controller = LoginController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
+        }
+    }
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            checkCurrentUser()
+        } catch {
+            print ("Error - sign out ")
+        }
+        
+    }
+    
+    
     func configureViewController() {
         view.backgroundColor = .white
         

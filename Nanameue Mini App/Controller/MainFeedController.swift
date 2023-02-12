@@ -7,12 +7,13 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 private let cellIdentifier = "cell"
 
 class MainFeedController: UICollectionViewController {
     
-
+    
     override func viewDidLoad() {
         view.backgroundColor = .white
         initUI()
@@ -21,7 +22,25 @@ class MainFeedController: UICollectionViewController {
     func initUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
     }
+    
+    @objc func logout () {
+        do {
+            try Auth.auth().signOut()
+            
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+            
+        } catch {
+            print ("Error - logout")
+        }
+        
+    }
+    
 }
 
 // MARK: - UICollectionView Data Source

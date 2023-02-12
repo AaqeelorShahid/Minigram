@@ -129,7 +129,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let name = nameField.text else {return}
-        guard let username = usernameField.text else {return}
+        guard let username = usernameField.text?.lowercased() else {return}
         guard let profileImage = self.profileImage else {return}
 
         let data = AuthData(email: email, password: password, name: name, username: username, profile: profileImage)
@@ -140,7 +140,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
                 return
             }
             
-            print("successfully sign up")
+            self.dismiss(animated: true)
         }
     }
     
