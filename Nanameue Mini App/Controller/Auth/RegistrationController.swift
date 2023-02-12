@@ -12,6 +12,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
     //MARK: - Properties
     
     private var viewModel = RegistationViewModel()
+    private var profileImage: UIImage?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -125,7 +126,22 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
     }
     
     @objc func signupBtnPressed() {
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let name = nameField.text else {return}
+        guard let username = usernameField.text else {return}
+        guard let profileImage = self.profileImage else {return}
+
+        let data = AuthData(email: email, password: password, name: name, username: username, profile: profileImage)
         
+        AuthenticationService.signupUser(withData: data) { err in
+            if let error = err {
+                print("Failed error \(error.localizedDescription)")
+                return
+            }
+            
+            print("successfully sign up")
+        }
     }
     
     @objc func backToLoginPage() {
@@ -147,6 +163,8 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        
+        profileImage = selectedImage
         
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         profileImageView.layer.masksToBounds = true
