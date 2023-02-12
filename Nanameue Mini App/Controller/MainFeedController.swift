@@ -20,7 +20,7 @@ class MainFeedController: UICollectionViewController {
     
     func initUI() {
         collectionView.backgroundColor = .white
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
     }
 }
 
@@ -28,8 +28,7 @@ class MainFeedController: UICollectionViewController {
 
 extension MainFeedController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FeedCollectionViewCell
         return cell
     }
     
@@ -42,6 +41,11 @@ extension MainFeedController {
 
 extension MainFeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 250)
+        
+        let width = view.frame.width
+        var height = width + 8 + 40 + 8
+        height += 110
+        
+        return CGSize(width: width, height: height)
     }
 }

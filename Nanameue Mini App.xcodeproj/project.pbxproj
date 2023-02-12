@@ -15,6 +15,9 @@
 		904DB51F2997AF9200704C08 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB51E2997AF9200704C08 /* NotificationController.swift */; };
 		904DB5212997AFA800704C08 /* PostMakerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5202997AFA800704C08 /* PostMakerController.swift */; };
 		904DB5232997AFB100704C08 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5222997AFB100704C08 /* ProfileController.swift */; };
+		904DB5252998395200704C08 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5242998395200704C08 /* FeedCollectionViewCell.swift */; };
+		904DB52729983A9E00704C08 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB52629983A9E00704C08 /* Extensions.swift */; };
+		904DB52A2998E97700704C08 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5292998E97700704C08 /* RegistrationController.swift */; };
 		9073F23A29969CE6003143B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073F23929969CE6003143B2 /* AppDelegate.swift */; };
 		9073F24129969CE6003143B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F23F29969CE6003143B2 /* Main.storyboard */; };
 		9073F24329969CE8003143B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24229969CE8003143B2 /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 		904DB51E2997AF9200704C08 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		904DB5202997AFA800704C08 /* PostMakerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMakerController.swift; sourceTree = "<group>"; };
 		904DB5222997AFB100704C08 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		904DB5242998395200704C08 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		904DB52629983A9E00704C08 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		904DB5292998E97700704C08 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		9073F23629969CE6003143B2 /* Nanameue Mini App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nanameue Mini App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9073F23929969CE6003143B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9073F24029969CE6003143B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +69,7 @@
 		904DB4F02997AA1600704C08 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				904DB5242998395200704C08 /* FeedCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -77,6 +84,7 @@
 		904DB4F22997AA2300704C08 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				904DB5282998E96400704C08 /* Auth */,
 				904DB4F62997AA8C00704C08 /* MainTabController.swift */,
 				904DB51A2997AECC00704C08 /* MainFeedController.swift */,
 				904DB51C2997AF8300704C08 /* SearchController.swift */,
@@ -104,8 +112,17 @@
 		904DB4F52997AA4D00704C08 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				904DB52629983A9E00704C08 /* Extensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		904DB5282998E96400704C08 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				904DB5292998E97700704C08 /* RegistrationController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		9073F22D29969CE6003143B2 = {
@@ -282,6 +299,9 @@
 				904DB51F2997AF9200704C08 /* NotificationController.swift in Sources */,
 				904DB4F72997AA8C00704C08 /* MainTabController.swift in Sources */,
 				904DB5232997AFB100704C08 /* ProfileController.swift in Sources */,
+				904DB52729983A9E00704C08 /* Extensions.swift in Sources */,
+				904DB52A2998E97700704C08 /* RegistrationController.swift in Sources */,
+				904DB5252998395200704C08 /* FeedCollectionViewCell.swift in Sources */,
 				904DB51B2997AECC00704C08 /* MainFeedController.swift in Sources */,
 				904DB5212997AFA800704C08 /* PostMakerController.swift in Sources */,
 				904DB5192997AB3300704C08 /* SceneDelegate.swift in Sources */,
