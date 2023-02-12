@@ -12,6 +12,20 @@ import UIKit
 // This is a helper class to design the UI. Since I'm not using the storyboard in this app I'm using this helper class to design the UI
 // since "Nanameue" is not developed using storyboard I'm not using it in this app
 
+extension UIButton {
+    func attributedText(firstString: String, secondString: String){
+        let attribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray2, .font: UIFont.systemFont(ofSize: 16)]
+        
+        let attributedFirstText = NSMutableAttributedString(string: firstString, attributes: attribute)
+        
+        let boldAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray, .font: UIFont.boldSystemFont(ofSize: 16)]
+        
+        attributedFirstText.append(NSMutableAttributedString(string: secondString, attributes: boldAttribute))
+       
+        setAttributedTitle(attributedFirstText, for: .normal)
+    }
+}
+
 // Below extenson basically it's a class which add constrains to views
 
 extension UIView {

@@ -53,19 +53,8 @@ class LoginController: UIViewController {
     
     private let signupLabelButton: UIButton = {
         let button = UIButton(type: .system)
-        
-        let attribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray2, .font: UIFont.systemFont(ofSize: 16)]
-        
-        let attributedFirstText = NSMutableAttributedString(string: "Don't have an account? ", attributes: attribute)
-        
-        let boldAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray, .font: UIFont.boldSystemFont(ofSize: 16)]
-        
-        attributedFirstText.append(NSMutableAttributedString(string: "Sign Up", attributes: boldAttribute))
-       
-        button.setAttributedTitle(attributedFirstText, for: .normal)
-        
+        button.attributedText(firstString: "Don't have an account? ", secondString: "Sign Up")
         button.isUserInteractionEnabled = true
-        
         return button
     }()
     
@@ -97,7 +86,6 @@ class LoginController: UIViewController {
         stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 48, paddingLeft: 16, paddingRight: 16)
         
         view.addSubview(signupLabelButton)
-//        view.centerX(inView: view)
         signupLabelButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 16, paddingRight: 16)
     }
     
