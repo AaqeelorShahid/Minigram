@@ -8,10 +8,11 @@
 import Foundation
 import UIKit
 
+
 // This is a helper class to design the UI. Since I'm not using the storyboard in this app I'm using this helper class to design the UI
 // since "Nanameue" is not developed using storyboard I'm not using it in this app
 
-// Basically it's a class which add constrains to views
+// Below extenson basically it's a class which add constrains to views
 
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,

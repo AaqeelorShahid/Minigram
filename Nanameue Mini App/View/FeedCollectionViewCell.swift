@@ -123,17 +123,17 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Actions
     
-    @objc func usernamePressed () {
+    @objc func usernamePressed() {
         print ("user name [ressed")
     }
     
-    @objc func likeBtnPressed () {
+    @objc func likeBtnPressed() {
         print ("like pressed")
     }
     
     //MARK: - Helpers
     
-    func initActionButtons () {
+    func initActionButtons() {
          
     }
 }

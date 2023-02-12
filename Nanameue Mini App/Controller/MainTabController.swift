@@ -17,7 +17,7 @@ class MainTabController: UITabBarController {
     }
     
     //Assinging view controllers in tab
-    func configureViewController () {
+    func configureViewController() {
         view.backgroundColor = .white
         
         
@@ -37,7 +37,7 @@ class MainTabController: UITabBarController {
         tabBar.isTranslucent = false
     }
     
-    func initNavigationController (unselectedImage: UIImage, selectedImage: UIImage, viewController: UIViewController) -> UINavigationController {
+    func initNavigationController(unselectedImage: UIImage, selectedImage: UIImage, viewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: viewController)
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
