@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RegistrationController: UIViewController {
+class RegistrationController: UIViewController, UIPickerViewDelegate{
     //MARK: - Properties
     
     private var viewModel = RegistationViewModel()
@@ -23,6 +23,7 @@ class RegistrationController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "profile_image_placeholder"), for: .normal)
         button.tintColor = UIColor(named: "main_color")
+        button.addTarget(self, action: #selector(profileSelectionBtn), for: .touchUpInside)
         return button
     }()
     
@@ -52,8 +53,9 @@ class RegistrationController: UIViewController {
     
     private let signupBtn: UIButton = {
         let button = UIButton(type: .system)
-        button.defaultButtonStyle(title: "Sign Up", backgroundColorString: "main_color")
+        button.defaultButtonStyle(title: "Sign Up", backgroundColorString: "sub_color")
         button.addTarget(self, action: #selector(signupBtnPressed), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     
@@ -69,6 +71,7 @@ class RegistrationController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .white
         initUI()
+        setNotificationObserverInField()
     }
     
     //MARK: - Helper functions
@@ -127,5 +130,30 @@ class RegistrationController: UIViewController {
     
     @objc func backToLoginPage() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func profileSelectionBtn() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        present(picker, animated: true)
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+        profileImageView.layer.masksToBounds = true
+        profileImageView.layer.borderWidth = 2
+        profileImageView.layer.borderColor = UIColor.systemGray2.cgColor
+        profileImageView.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+     
+        self.dismiss(animated: true)
     }
 }
