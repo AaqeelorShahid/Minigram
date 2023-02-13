@@ -30,6 +30,14 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    private lazy var menuButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "menu_icon"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(menuBtnPressed), for: .touchUpInside)
+        return button
+    }()
+    
     private let postText: UILabel = {
         let label = UILabel()
         label.text = "Life is too short to waste time on things that don't make you happy. Focus on what brings joy and let go of the rest"
@@ -81,8 +89,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -94,6 +100,11 @@ class FeedCollectionViewCell: UICollectionViewCell {
         
         addSubview(usernameButton)
         usernameButton.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 12)
+        
+        addSubview(menuButton)
+        menuButton.anchor(top: topAnchor, right: rightAnchor,
+                                paddingTop: 16, paddingRight: 12)
+        menuButton.setDimensions(height: 20, width: 20)
         
         addSubview(postText)
         postText.anchor(top: profileImageView.bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 8, paddingRight: 8)
@@ -128,6 +139,10 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func likeBtnPressed() {
+        print ("like pressed")
+    }
+    
+    @objc func menuBtnPressed() {
         print ("like pressed")
     }
     
