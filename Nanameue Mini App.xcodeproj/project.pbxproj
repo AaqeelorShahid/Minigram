@@ -24,6 +24,8 @@
 		904DB532299971D600704C08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 904DB531299971D600704C08 /* GoogleService-Info.plist */; };
 		904DB5342999758600704C08 /* UploadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5332999758600704C08 /* UploadImage.swift */; };
 		904DB5362999796B00704C08 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5352999796B00704C08 /* AuthenticationService.swift */; };
+		904DB539299A8F8F00704C08 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB538299A8F8F00704C08 /* ProfileCell.swift */; };
+		904DB53D299A8FB400704C08 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB53C299A8FB400704C08 /* ProfileHeader.swift */; };
 		9073F23A29969CE6003143B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073F23929969CE6003143B2 /* AppDelegate.swift */; };
 		9073F24129969CE6003143B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F23F29969CE6003143B2 /* Main.storyboard */; };
 		9073F24329969CE8003143B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24229969CE8003143B2 /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		904DB531299971D600704C08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		904DB5332999758600704C08 /* UploadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImage.swift; sourceTree = "<group>"; };
 		904DB5352999796B00704C08 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		904DB538299A8F8F00704C08 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		904DB53C299A8FB400704C08 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		9073F23629969CE6003143B2 /* Nanameue Mini App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nanameue Mini App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9073F23929969CE6003143B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9073F24029969CE6003143B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 		904DB4F02997AA1600704C08 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				904DB537299A8F8600704C08 /* Profile */,
 				904DB5242998395200704C08 /* FeedCollectionViewCell.swift */,
 				904DB52D2998FF7B00704C08 /* CustomTextField.swift */,
 			);
@@ -140,6 +145,15 @@
 				904DB52B2998EBC300704C08 /* LoginController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		904DB537299A8F8600704C08 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				904DB538299A8F8F00704C08 /* ProfileCell.swift */,
+				904DB53C299A8FB400704C08 /* ProfileHeader.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		9073F22D29969CE6003143B2 = {
@@ -313,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				904DB539299A8F8F00704C08 /* ProfileCell.swift in Sources */,
 				904DB52E2998FF7B00704C08 /* CustomTextField.swift in Sources */,
 				904DB51D2997AF8300704C08 /* SearchController.swift in Sources */,
 				904DB5302999272600704C08 /* AuthenticationViewModel.swift in Sources */,
@@ -320,6 +335,7 @@
 				9073F23A29969CE6003143B2 /* AppDelegate.swift in Sources */,
 				904DB51F2997AF9200704C08 /* NotificationController.swift in Sources */,
 				904DB4F72997AA8C00704C08 /* MainTabController.swift in Sources */,
+				904DB53D299A8FB400704C08 /* ProfileHeader.swift in Sources */,
 				904DB5362999796B00704C08 /* AuthenticationService.swift in Sources */,
 				904DB5232997AFB100704C08 /* ProfileController.swift in Sources */,
 				904DB52729983A9E00704C08 /* Extensions.swift in Sources */,
