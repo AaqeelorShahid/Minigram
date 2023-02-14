@@ -11,6 +11,8 @@
 		903555EC299BEA27008E34D5 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555EB299BEA27008E34D5 /* ProfileService.swift */; };
 		903555EE299BEA3D008E34D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555ED299BEA3D008E34D5 /* Constants.swift */; };
 		903555F0299BEC42008E34D5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555EF299BEC42008E34D5 /* UserModel.swift */; };
+		903555F6299C1EB4008E34D5 /* PostUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555F5299C1EB4008E34D5 /* PostUploadController.swift */; };
+		903555FA299C310D008E34D5 /* MultiLineInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555F9299C310D008E34D5 /* MultiLineInputTextView.swift */; };
 		904DB4F72997AA8C00704C08 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB4F62997AA8C00704C08 /* MainTabController.swift */; };
 		904DB5192997AB3300704C08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5182997AB3300704C08 /* SceneDelegate.swift */; };
 		904DB51B2997AECC00704C08 /* MainFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB51A2997AECC00704C08 /* MainFeedController.swift */; };
@@ -38,6 +40,8 @@
 		903555EB299BEA27008E34D5 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		903555ED299BEA3D008E34D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		903555EF299BEC42008E34D5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		903555F5299C1EB4008E34D5 /* PostUploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUploadController.swift; sourceTree = "<group>"; };
+		903555F9299C310D008E34D5 /* MultiLineInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputTextView.swift; sourceTree = "<group>"; };
 		904DB4F62997AA8C00704C08 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		904DB5182997AB3300704C08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		904DB51A2997AECC00704C08 /* MainFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				904DB537299A8F8600704C08 /* Profile */,
 				904DB5242998395200704C08 /* FeedCollectionViewCell.swift */,
 				904DB52D2998FF7B00704C08 /* CustomTextField.swift */,
+				903555F9299C310D008E34D5 /* MultiLineInputTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 				904DB51E2997AF9200704C08 /* NotificationController.swift */,
 				904DB5202997AFA800704C08 /* PostMakerController.swift */,
 				904DB5222997AFB100704C08 /* ProfileController.swift */,
+				903555F5299C1EB4008E34D5 /* PostUploadController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,7 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903555F6299C1EB4008E34D5 /* PostUploadController.swift in Sources */,
 				904DB52E2998FF7B00704C08 /* CustomTextField.swift in Sources */,
+				903555FA299C310D008E34D5 /* MultiLineInputTextView.swift in Sources */,
 				903555EE299BEA3D008E34D5 /* Constants.swift in Sources */,
 				904DB51D2997AF8300704C08 /* SearchController.swift in Sources */,
 				904DB5302999272600704C08 /* AuthenticationViewModel.swift in Sources */,

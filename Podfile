@@ -13,5 +13,6 @@ target 'Nanameue Mini App' do
 	pod 'FirebaseCrashlytics'
 	pod 'FirebaseMessaging'
   pod 'SDWebImage'
+  pod 'YPImagePicker'
 
 end

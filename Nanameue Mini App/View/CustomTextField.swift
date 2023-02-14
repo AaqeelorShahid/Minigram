@@ -11,7 +11,6 @@ import UIKit
 class CustomTextField: UITextField {
     init(placeholderText: String) {
         super.init(frame: .zero)
-        
         setHeight(50)
         
         let innerPadding = UIView()

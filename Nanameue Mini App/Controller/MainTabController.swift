@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import YPImagePicker
 
 
 class MainTabController: UITabBarController {
@@ -56,6 +57,7 @@ class MainTabController: UITabBarController {
     
     
     func configureViewController(model: UserModel) {
+        self.delegate = self
         view.backgroundColor = .white
         
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -82,6 +84,16 @@ class MainTabController: UITabBarController {
         nav.navigationBar.tintColor = .black
         return nav
     }
+    
+    func finishedPickingThePhoto(_ picker: YPImagePicker){
+        picker.didFinishPicking { items, cancelled in
+            picker.dismiss(animated: true) {
+                guard let image = items.singlePhoto?.image else {return}
+                print ("sadasdsa", image)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Authentication Delegate
@@ -90,5 +102,35 @@ extension MainTabController: AuthenticationDelegate {
     func authenticationCompleted() {
         fetchUserData()
         self.dismiss(animated: true)
+    }
+}
+
+extension MainTabController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let selectedTabIndex = viewControllers?.firstIndex(of: viewController)
+        
+        //TODO: - if removed the search and notification tab, please change the index of post maker below
+        if selectedTabIndex == 2 {
+//            var imagePickerConfig = YPImagePickerConfiguration()
+//            imagePickerConfig.library.mediaType = .photo
+//            imagePickerConfig.library.maxNumberOfItems = 1
+//            imagePickerConfig.startOnScreen = .library
+//            imagePickerConfig.shouldSaveNewPicturesToAlbum = false
+//            imagePickerConfig.hidesBottomBar = false
+//            imagePickerConfig.screens = [.library]
+//            imagePickerConfig.hidesBottomBar = false
+//
+//            let imagePicker = YPImagePicker(configuration: imagePickerConfig)
+//            imagePicker.modalPresentationStyle = .fullScreen
+//            present(imagePicker, animated: true)
+//            
+//            finishedPickingThePhoto(imagePicker)
+            
+            let a = PostUploadController()
+            a.modalPresentationStyle = .fullScreen
+            present(a, animated: true)
+        }
+        
+        return true
     }
 }

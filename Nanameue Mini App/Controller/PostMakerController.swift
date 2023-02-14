@@ -10,6 +10,6 @@ import UIKit
 
 class PostMakerController: UIViewController {
     override func viewDidLoad() {
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
     }
 }
