@@ -17,7 +17,7 @@ class LoginController: UIViewController {
     //MARK: - Properties
     
     private var viewModel =  LoginViewModel()
-    weak var delegate: AuthenticationDelegate?
+    var delegate: AuthenticationDelegate?
     
     private let iconImageView: UIImageView = {
         let imageview = UIImageView(image: UIImage(named: "AppIcon"))
