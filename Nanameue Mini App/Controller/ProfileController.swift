@@ -15,6 +15,10 @@ class ProfileController: UICollectionViewController {
     
     //MARK: - Properties
     
+    var model: UserModel? {
+        didSet{ collectionView.reloadData() }
+    }
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -34,7 +38,7 @@ class ProfileController: UICollectionViewController {
     
     func fetchUserData() {
         ProfileService.fetchUserData { userData in
-            self.user = userData
+            self.model = userData
         }
     }
 }
@@ -55,7 +59,12 @@ extension ProfileController {
         let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: headerIdentifier,
-            for: indexPath)
+            for: indexPath) as! ProfileHeader
+        
+        if let user = model {
+            header.viewModel = user
+        }
+        
         return header
     }
 }

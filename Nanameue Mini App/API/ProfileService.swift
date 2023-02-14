@@ -19,7 +19,7 @@ class ProfileService {
             if(err != nil) {
                 print("User data fetching error")
             }
-            print(user)
+            completion(user)
         }
     }
 }

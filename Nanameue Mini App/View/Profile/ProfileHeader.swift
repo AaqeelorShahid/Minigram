@@ -7,9 +7,15 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class ProfileHeader: UICollectionReusableView {
     // MARK: - Properties
+    
+    var viewModel: UserModel? {
+        didSet{initHeaderUI()}
+    }
+    
     let profilePicture: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "profile"), for: .normal)
@@ -174,6 +180,14 @@ class ProfileHeader: UICollectionReusableView {
         attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
         
         return attributedText
+    }
+    
+    func initHeaderUI() {
+        guard let viewModel = viewModel else {return}
+        
+        nameLabel.text = viewModel.name
+        usernameLabel.text = viewModel.username
+        profilePicture.sd_setImage(with: URL(string: viewModel.profileUrl), for: .normal)
     }
     
 //    MARK: - Actions
