@@ -132,7 +132,8 @@ class LoginController: UIViewController {
     
     @objc func noAccountBtnPressed() {
         let controller = RegistrationController()
+        //We cannot set self for the delegate because LoginController doesn't handling the protocol / Here this delegate means MainTabController
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }

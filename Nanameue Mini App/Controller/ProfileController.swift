@@ -15,15 +15,25 @@ class ProfileController: UICollectionViewController {
     
     //MARK: - Properties
     
-    var model: UserModel? {
+    var model: UserModel {
         didSet{ collectionView.reloadData() }
     }
     
     //MARK: - Lifecycle
     
+    
+    //Dependency Injection because this controller needs user object to initialize the UI
+    init(model: UserModel) {
+        self.model = model
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         initUI()
-        fetchUserData()
     }
     
     //MARK: - Helper functions
@@ -34,12 +44,6 @@ class ProfileController: UICollectionViewController {
         collectionView.register(ProfileHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: headerIdentifier)
-    }
-    
-    func fetchUserData() {
-        ProfileService.fetchUserData { userData in
-            self.model = userData
-        }
     }
 }
 
@@ -61,9 +65,7 @@ extension ProfileController {
             withReuseIdentifier: headerIdentifier,
             for: indexPath) as! ProfileHeader
         
-        if let user = model {
-            header.viewModel = user
-        }
+        header.viewModel = model
         
         return header
     }

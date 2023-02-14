@@ -12,9 +12,16 @@ import FirebaseAuth
 
 class MainTabController: UITabBarController {
     // MARK: - Life cycle
+    private var model: UserModel? {
+        didSet {
+            guard let model: UserModel else {return}
+            configureViewController(model: model)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewController()
+        
         checkCurrentUser()
     }
     
@@ -32,6 +39,12 @@ class MainTabController: UITabBarController {
         }
     }
     
+    func fetchUserData() {
+        ProfileService.fetchUserData { userData in
+            self.model = userData
+        }
+    }
+    
     func logout() {
         do {
             try Auth.auth().signOut()
@@ -43,7 +56,7 @@ class MainTabController: UITabBarController {
     }
     
     
-    func configureViewController() {
+    func configureViewController(model: UserModel) {
         view.backgroundColor = .white
         
         
@@ -56,8 +69,8 @@ class MainTabController: UITabBarController {
         
         let notification = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "notification_unselected"), selectedImage: UIImage(imageLiteralResourceName: "notification_selected"), viewController: NotificationController())
         
-        let layout = UICollectionViewFlowLayout()
-        let profile = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "profile_unselected"), selectedImage: UIImage(imageLiteralResourceName: "profile_selected"), viewController: ProfileController(collectionViewLayout: layout))
+        let profileController = ProfileController(model: model)
+        let profile = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "profile_unselected"), selectedImage: UIImage(imageLiteralResourceName: "profile_selected"), viewController: profileController)
         
         viewControllers = [feed, search, postMaker, notification, profile]
         tabBar.tintColor = .black
@@ -73,8 +86,11 @@ class MainTabController: UITabBarController {
     }
 }
 
+// MARK: - Authentication Delegate
+
 extension MainTabController: AuthenticationDelegate {
     func authenticationCompleted() {
+        fetchUserData()
         self.dismiss(animated: true)
     }
 }
