@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D3413C546757DC648ED0C38 /* Pods_Nanameue_Mini_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8531CDEF0BF9B3D39D6C64 /* Pods_Nanameue_Mini_App.framework */; };
+		903555EC299BEA27008E34D5 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555EB299BEA27008E34D5 /* ProfileService.swift */; };
+		903555EE299BEA3D008E34D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555ED299BEA3D008E34D5 /* Constants.swift */; };
+		903555F0299BEC42008E34D5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903555EF299BEC42008E34D5 /* UserModel.swift */; };
 		904DB4F72997AA8C00704C08 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB4F62997AA8C00704C08 /* MainTabController.swift */; };
 		904DB5192997AB3300704C08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB5182997AB3300704C08 /* SceneDelegate.swift */; };
 		904DB51B2997AECC00704C08 /* MainFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DB51A2997AECC00704C08 /* MainFeedController.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		903555EB299BEA27008E34D5 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		903555ED299BEA3D008E34D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		903555EF299BEC42008E34D5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		904DB4F62997AA8C00704C08 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		904DB5182997AB3300704C08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		904DB51A2997AECC00704C08 /* MainFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedController.swift; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 		904DB4F32997AA3100704C08 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				903555EF299BEC42008E34D5 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -124,6 +131,7 @@
 			children = (
 				904DB5332999758600704C08 /* UploadImage.swift */,
 				904DB5352999796B00704C08 /* AuthenticationService.swift */,
+				903555EB299BEA27008E34D5 /* ProfileService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -132,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				904DB52629983A9E00704C08 /* Extensions.swift */,
+				903555ED299BEA3D008E34D5 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -325,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				904DB52E2998FF7B00704C08 /* CustomTextField.swift in Sources */,
+				903555EE299BEA3D008E34D5 /* Constants.swift in Sources */,
 				904DB51D2997AF8300704C08 /* SearchController.swift in Sources */,
 				904DB5302999272600704C08 /* AuthenticationViewModel.swift in Sources */,
 				904DB52C2998EBC300704C08 /* LoginController.swift in Sources */,
@@ -335,11 +345,13 @@
 				904DB5362999796B00704C08 /* AuthenticationService.swift in Sources */,
 				904DB5232997AFB100704C08 /* ProfileController.swift in Sources */,
 				904DB52729983A9E00704C08 /* Extensions.swift in Sources */,
+				903555EC299BEA27008E34D5 /* ProfileService.swift in Sources */,
 				904DB52A2998E97700704C08 /* RegistrationController.swift in Sources */,
 				904DB5252998395200704C08 /* FeedCollectionViewCell.swift in Sources */,
 				904DB51B2997AECC00704C08 /* MainFeedController.swift in Sources */,
 				904DB5342999758600704C08 /* UploadImage.swift in Sources */,
 				904DB5212997AFA800704C08 /* PostMakerController.swift in Sources */,
+				903555F0299BEC42008E34D5 /* UserModel.swift in Sources */,
 				904DB5192997AB3300704C08 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

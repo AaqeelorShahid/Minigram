@@ -15,11 +15,11 @@ class ProfileController: UICollectionViewController {
     
     //MARK: - Properties
     
-    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         initUI()
+        fetchUserData()
     }
     
     //MARK: - Helper functions
@@ -30,6 +30,12 @@ class ProfileController: UICollectionViewController {
         collectionView.register(ProfileHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: headerIdentifier)
+    }
+    
+    func fetchUserData() {
+        ProfileService.fetchUserData { userData in
+            self.user = userData
+        }
     }
 }
 
