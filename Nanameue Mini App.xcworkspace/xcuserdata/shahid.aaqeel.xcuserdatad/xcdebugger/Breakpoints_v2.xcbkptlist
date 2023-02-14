@@ -20,16 +20,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "53F76A4F-BDE8-4F14-8919-074BD18CE173"
-            shouldBeEnabled = "Yes"
+            uuid = "3036CDF1-07F7-493F-A4E1-4D3B0F3CD4BD"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Nanameue Mini App/API/ProfileService.swift"
+            filePath = "Nanameue Mini App/Controller/MainTabController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "fetchUserData(completion:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "fetchUserData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

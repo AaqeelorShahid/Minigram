@@ -21,8 +21,8 @@ class MainTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         checkCurrentUser()
+        fetchUserData()
     }
     
     // MARK: - Helper functions
@@ -52,13 +52,11 @@ class MainTabController: UITabBarController {
         } catch {
             print ("Error - sign out ")
         }
-        
     }
     
     
     func configureViewController(model: UserModel) {
         view.backgroundColor = .white
-        
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         let feed = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "feed_unselected"), selectedImage: UIImage(imageLiteralResourceName: "feed_selected"), viewController: MainFeedController(collectionViewLayout: collectionViewLayout))

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol AuthenticationDelegate {
+protocol AuthenticationDelegate: AnyObject {
     func authenticationCompleted()
 }
 
@@ -17,7 +17,7 @@ class LoginController: UIViewController {
     //MARK: - Properties
     
     private var viewModel =  LoginViewModel()
-    var delegate: AuthenticationDelegate?
+    weak var delegate: AuthenticationDelegate?
     
     private let iconImageView: UIImageView = {
         let imageview = UIImageView(image: UIImage(named: "AppIcon"))

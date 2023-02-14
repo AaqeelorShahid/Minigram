@@ -11,7 +11,7 @@ import UIKit
 class RegistrationController: UIViewController, UIPickerViewDelegate{
     //MARK: - Properties
     
-    var delegate: AuthenticationDelegate?
+    weak var delegate: AuthenticationDelegate?
     private var viewModel = RegistationViewModel()
     private var profileImage: UIImage?
     
