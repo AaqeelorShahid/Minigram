@@ -69,6 +69,15 @@ class PostUploadController: UIViewController {
         return label
     }()
     
+    private let addPicBtn : UIButton =  {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "add_picture_icon"), for: .normal)
+        button.tintColor = UIColor.white
+        button.backgroundColor = UIColor(named: "main_color")
+        button.addTarget(self, action: #selector(addPictureBtnPressed), for: .touchUpInside)
+        return button
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -101,6 +110,12 @@ class PostUploadController: UIViewController {
         view.addSubview(textLengthCount)
         textLengthCount.anchor(top: postTextField.bottomAnchor, right: view.rightAnchor, paddingTop: 8, paddingRight: 12)
         
+        view.addSubview(addPicBtn)
+        addPicBtn.setDimensions(height: 50, width: 50)
+        addPicBtn.layer.cornerRadius = 25
+        addPicBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        addPicBtn.anchor(top: postTextField.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 12)
+        
     }
     
     //MARK: - Helper functions
@@ -118,6 +133,10 @@ class PostUploadController: UIViewController {
     
     @objc func postBtnPressed() {
         
+    }
+    
+    @objc func addPictureBtnPressed() {
+        print ("asdasdasd")
     }
 }
 
