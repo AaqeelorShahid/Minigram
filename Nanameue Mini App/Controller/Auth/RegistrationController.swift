@@ -8,12 +8,13 @@
 import Foundation
 import UIKit
 
-class RegistrationController: UIViewController, UIPickerViewDelegate{
+class RegistrationController: UIViewController{
     //MARK: - Properties
     
     weak var delegate: AuthenticationDelegate?
     private var viewModel = RegistationViewModel()
     private var profileImage: UIImage?
+
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -150,29 +151,5 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
     }
     
     @objc func profileSelectionBtn() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = true
-        
-        present(picker, animated: true)
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate
-
-extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        
-        profileImage = selectedImage
-        
-        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
-        profileImageView.layer.masksToBounds = true
-        profileImageView.layer.borderWidth = 2
-        profileImageView.layer.borderColor = UIColor.systemGray2.cgColor
-        profileImageView.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
-     
-        self.dismiss(animated: true)
     }
 }

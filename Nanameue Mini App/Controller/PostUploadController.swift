@@ -8,9 +8,12 @@
 import Foundation
 import UIKit
 
-class PostUploadController: UIViewController {
+class PostUploadController: UIViewController, UIPickerViewDelegate {
     
     //MARK: - Properties
+    
+    private var postImage: UIImage?
+    
     private let cancelBtn: UIButton =  {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
@@ -78,6 +81,15 @@ class PostUploadController: UIViewController {
         return button
     }()
     
+    private let selectedPicture: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        imageView.image = UIImage(named: "profile")
+        return imageView
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -103,7 +115,7 @@ class PostUploadController: UIViewController {
         nameLabel.anchor(left: profileImageView.rightAnchor, paddingLeft: 12)
         
         view.addSubview(postTextField)
-        postTextField.setDimensions(height: 500, width: view.frame.width)
+        postTextField.setDimensions(height: 300, width: view.frame.width)
         postTextField.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingLeft: 52, paddingRight: 8)
         postTextField.delegate = self
         
@@ -115,6 +127,10 @@ class PostUploadController: UIViewController {
         addPicBtn.layer.cornerRadius = 25
         addPicBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         addPicBtn.anchor(top: postTextField.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 12)
+        
+        view.addSubview(selectedPicture)
+        selectedPicture.layer.cornerRadius = 25
+        selectedPicture.anchor(top: addPicBtn.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingRight: 12)
         
     }
     
@@ -136,7 +152,11 @@ class PostUploadController: UIViewController {
     }
     
     @objc func addPictureBtnPressed() {
-        print ("asdasdasd")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        present(picker, animated: true)
     }
 }
 
@@ -154,5 +174,16 @@ extension PostUploadController: UITextViewDelegate {
             postBtn.backgroundColor = UIColor(named: "sub_color")
             postBtn.isEnabled = false
         }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension PostUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        postImage = selectedImage
+        self.dismiss(animated: true)
     }
 }
