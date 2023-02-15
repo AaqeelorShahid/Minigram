@@ -84,16 +84,6 @@ class MainTabController: UITabBarController {
         nav.navigationBar.tintColor = .black
         return nav
     }
-    
-    func finishedPickingThePhoto(_ picker: YPImagePicker){
-        picker.didFinishPicking { items, cancelled in
-            picker.dismiss(animated: true) {
-                guard let image = items.singlePhoto?.image else {return}
-                print ("sadasdsa", image)
-            }
-        }
-    }
-    
 }
 
 // MARK: - Authentication Delegate
@@ -111,24 +101,9 @@ extension MainTabController: UITabBarControllerDelegate {
         
         //TODO: - if removed the search and notification tab, please change the index of post maker below
         if selectedTabIndex == 2 {
-//            var imagePickerConfig = YPImagePickerConfiguration()
-//            imagePickerConfig.library.mediaType = .photo
-//            imagePickerConfig.library.maxNumberOfItems = 1
-//            imagePickerConfig.startOnScreen = .library
-//            imagePickerConfig.shouldSaveNewPicturesToAlbum = false
-//            imagePickerConfig.hidesBottomBar = false
-//            imagePickerConfig.screens = [.library]
-//            imagePickerConfig.hidesBottomBar = false
-//
-//            let imagePicker = YPImagePicker(configuration: imagePickerConfig)
-//            imagePicker.modalPresentationStyle = .fullScreen
-//            present(imagePicker, animated: true)
-//            
-//            finishedPickingThePhoto(imagePicker)
-            
-            let a = PostUploadController()
-            a.modalPresentationStyle = .fullScreen
-            present(a, animated: true)
+            let controller = PostUploadController()
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true)
         }
         
         return true

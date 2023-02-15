@@ -7,12 +7,20 @@
 
 import Foundation
 import UIKit
+import YPImagePicker
 
 class PostUploadController: UIViewController, UIPickerViewDelegate {
     
     //MARK: - Properties
     
-    private var postImage: UIImage?
+    private var postImage: UIImage? {
+        didSet {
+            selectedPicture.image = postImage
+            if (postImage != nil) {
+                removeImageBtn.isHidden = false
+            }
+        }
+    }
     
     private let cancelBtn: UIButton =  {
         let button = UIButton(type: .system)
@@ -68,7 +76,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 15)
-        label.text = "0/1000"
+        label.text = "0/250"
         return label
     }()
     
@@ -81,12 +89,20 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         return button
     }()
     
+    private let removeImageBtn : UIButton =  {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
+        button.tintColor = UIColor.white
+        button.addTarget(self, action: #selector(removeImage), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+    
     private let selectedPicture: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
-        imageView.image = UIImage(named: "profile")
         return imageView
     }()
     
@@ -115,29 +131,51 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         nameLabel.anchor(left: profileImageView.rightAnchor, paddingLeft: 12)
         
         view.addSubview(postTextField)
-        postTextField.setDimensions(height: 300, width: view.frame.width)
+        postTextField.setDimensions(height: 200, width: view.frame.width)
         postTextField.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingLeft: 52, paddingRight: 8)
         postTextField.delegate = self
         
+        view.addSubview(selectedPicture)
+        selectedPicture.layer.cornerRadius = 15
+        selectedPicture.anchor(top: postTextField.bottomAnchor,
+                               left: view.leftAnchor,
+                               paddingTop: 12,
+                               paddingLeft: 52,
+                               width: view.layer.frame.width / 3,
+                               height: 200)
+        
         view.addSubview(textLengthCount)
-        textLengthCount.anchor(top: postTextField.bottomAnchor, right: view.rightAnchor, paddingTop: 8, paddingRight: 12)
+        textLengthCount.anchor(top: selectedPicture.bottomAnchor, right: view.rightAnchor, paddingTop: 8, paddingRight: 12)
         
         view.addSubview(addPicBtn)
         addPicBtn.setDimensions(height: 50, width: 50)
         addPicBtn.layer.cornerRadius = 25
         addPicBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        addPicBtn.anchor(top: postTextField.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 12)
+        addPicBtn.anchor(top: selectedPicture.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 12)
         
-        view.addSubview(selectedPicture)
-        selectedPicture.layer.cornerRadius = 25
-        selectedPicture.anchor(top: addPicBtn.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingRight: 12)
-        
+        view.addSubview(removeImageBtn)
+        removeImageBtn.setDimensions(height: 25, width: 25)
+        removeImageBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        removeImageBtn.anchor(top: selectedPicture.topAnchor, right: selectedPicture.rightAnchor, paddingTop: 5, paddingRight: 5)
     }
     
     //MARK: - Helper functions
     func checkTextViewLength(_ textView: UITextView, maxLength: Int){
         if (textView.text.count > maxLength){
             textView.deleteBackward()
+        }
+    }
+    
+    func addImageRemoveBtn() {
+        
+    }
+    
+    func finishedPickingThePhoto(_ picker: YPImagePicker){
+        picker.didFinishPicking { items, cancelled in
+            picker.dismiss(animated: true) {
+                guard let image = items.singlePhoto?.image else {return}
+                self.postImage = image
+            }
         }
     }
     
@@ -152,11 +190,30 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     }
     
     @objc func addPictureBtnPressed() {
+        var imagePickerConfig = YPImagePickerConfiguration()
+        imagePickerConfig.library.mediaType = .photo
+        imagePickerConfig.library.maxNumberOfItems = 1
+        imagePickerConfig.startOnScreen = .library
+        imagePickerConfig.shouldSaveNewPicturesToAlbum = false
+        imagePickerConfig.hidesBottomBar = false
+        imagePickerConfig.screens = [.library]
+        imagePickerConfig.hidesBottomBar = false
+        
+        let imagePicker = YPImagePicker(configuration: imagePickerConfig)
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true)
+        
+        finishedPickingThePhoto(imagePicker)
+        
         let picker = UIImagePickerController()
-        picker.delegate = self
         picker.allowsEditing = true
         
         present(picker, animated: true)
+    }
+    
+    @objc func removeImage() {
+        removeImageBtn.isHidden = true
+        postImage = nil
     }
 }
 
@@ -164,8 +221,8 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
 
 extension PostUploadController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        checkTextViewLength(textView, maxLength: 1000)
-        textLengthCount.text = "\(textView.text.count)/1000"
+        checkTextViewLength(textView, maxLength: 200)
+        textLengthCount.text = "\(textView.text.count)/200"
         
         if (textView.text.count > 0){
             postBtn.backgroundColor = UIColor(named: "main_color")
@@ -174,16 +231,5 @@ extension PostUploadController: UITextViewDelegate {
             postBtn.backgroundColor = UIColor(named: "sub_color")
             postBtn.isEnabled = false
         }
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate
-
-extension PostUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        postImage = selectedImage
-        self.dismiss(animated: true)
     }
 }
