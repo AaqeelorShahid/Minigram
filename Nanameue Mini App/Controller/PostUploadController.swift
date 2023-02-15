@@ -25,6 +25,13 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
             selectedPicture.image = postImage
             if (postImage != nil) {
                 removeImageBtn.isHidden = false
+                handlePostBtnState(true)
+            } else {
+                if (!postTextField.text.isEmpty){
+                    handlePostBtnState(true)
+                } else {
+                    handlePostBtnState(false)
+                }
             }
         }
     }
@@ -183,6 +190,17 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    func handlePostBtnState(_ state: Bool){
+        if(state) {
+            postBtn.isEnabled = true
+            postBtn.backgroundColor = UIColor(named: "main_color")
+            postBtn.tintColor = .white
+        } else {
+            postBtn.isEnabled = false
+            postBtn.backgroundColor = UIColor(named: "sub_color")
+        }
+    }
+    
     //MARK: - actions
     
     @objc func cancelSheetBtnPressed() {
@@ -190,6 +208,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     }
     
     @objc func postBtnPressed() {
+        showLoading(true)
         guard let postText = postTextField.text else {return}
         
         if (postImage != nil){
@@ -235,6 +254,11 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     }
     
     @objc func removeImage() {
+        if (postImage != nil) {
+            removeImageBtn.isHidden = false
+            handlePostBtnState(true)
+        }
+        
         removeImageBtn.isHidden = true
         postImage = nil
     }
@@ -248,11 +272,9 @@ extension PostUploadController: UITextViewDelegate {
         textLengthCount.text = "\(textView.text.count)/\(textPostLimit)"
         
         if (textView.text.count > 0){
-            postBtn.backgroundColor = UIColor(named: "main_color")
-            postBtn.isEnabled = true
+            handlePostBtnState(true)
         } else {
-            postBtn.backgroundColor = UIColor(named: "sub_color")
-            postBtn.isEnabled = false
+            handlePostBtnState(false)
         }
     }
 }

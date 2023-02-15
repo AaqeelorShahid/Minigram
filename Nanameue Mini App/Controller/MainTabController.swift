@@ -91,9 +91,12 @@ class MainTabController: UITabBarController {
 extension MainTabController: AuthenticationDelegate {
     func authenticationCompleted() {
         fetchUserData()
+        showLoading(false)
         self.dismiss(animated: true)
     }
 }
+
+// MARK: - UITabBarControllerDelegate
 
 extension MainTabController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
@@ -111,9 +114,12 @@ extension MainTabController: UITabBarControllerDelegate {
     }
 }
 
+// MARK: - PostUploadDelegate
+
 extension MainTabController: PostUploadProtocol {
     func controllerDidFinishTask(_ controller: PostUploadController) {
         selectedIndex = 0
         controller.dismiss(animated: true)
+        showLoading(false)
     }
 }

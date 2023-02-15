@@ -7,10 +7,23 @@
 
 import Foundation
 import UIKit
-
-
+import JGProgressHUD
 // This is a helper class to design the UI. Since I'm not using the storyboard in this app I'm using this helper class to design the UI
 // since "Nanameue" is not developed using storyboard I'm not using it in this app
+
+extension UIViewController {
+    static let hud = JGProgressHUD(style: .dark)
+    
+    func showLoading(_ show: Bool){
+        view.endEditing(true)
+        
+        if show {
+            UIViewController.hud.show(in: view, animated: true)
+        } else {
+            UIViewController.hud.dismiss(animated: true)
+        }
+    }
+}
 
 extension UIButton {
     func attributedText(firstString: String, secondString: String){

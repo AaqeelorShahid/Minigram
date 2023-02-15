@@ -119,6 +119,8 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         
+        showLoading(true)
+        
         AuthenticationService.loginUser(withEmail: email, password: password) { result, err in
             
             if let error = err {

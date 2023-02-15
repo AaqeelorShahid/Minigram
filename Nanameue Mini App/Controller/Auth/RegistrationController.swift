@@ -128,6 +128,8 @@ class RegistrationController: UIViewController{
     }
     
     @objc func signupBtnPressed() {
+        showLoading(true)
+        
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let name = nameField.text else {return}
@@ -151,5 +153,6 @@ class RegistrationController: UIViewController{
     }
     
     @objc func profileSelectionBtn() {
+        
     }
 }

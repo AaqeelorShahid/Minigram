@@ -14,5 +14,6 @@ target 'Nanameue Mini App' do
 	pod 'FirebaseMessaging'
   pod 'SDWebImage'
   pod 'YPImagePicker'
+  pod 'JGProgressHUD'
 
 end
