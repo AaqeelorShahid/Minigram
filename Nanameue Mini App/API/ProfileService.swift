@@ -9,6 +9,8 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
+typealias FirestoreCompletion = (Error?) -> Void
+
 class ProfileService {
     static func fetchUserData(completion: @escaping (UserModel) -> Void) {
         guard let uid = FirebaseAuth.Auth.auth().currentUser?.uid else {return}

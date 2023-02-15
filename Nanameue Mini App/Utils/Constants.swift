@@ -9,3 +9,4 @@ import Foundation
 import FirebaseFirestore
 
 let COLLECTION_USERS = Firestore.firestore().collection("users")
+let COLLECTION_POST = Firestore.firestore().collection("posts")

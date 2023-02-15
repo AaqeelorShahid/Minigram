@@ -34,6 +34,7 @@
 		9073F24129969CE6003143B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F23F29969CE6003143B2 /* Main.storyboard */; };
 		9073F24329969CE8003143B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24229969CE8003143B2 /* Assets.xcassets */; };
 		9073F24629969CE8003143B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24429969CE8003143B2 /* LaunchScreen.storyboard */; };
+		90A5B7E4299D6A6900FB4F99 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E3299D6A6900FB4F99 /* PostService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		9073F24229969CE8003143B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9073F24529969CE8003143B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9073F24729969CE8003143B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90A5B7E3299D6A6900FB4F99 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		E3CD077D9D1093A07DD49C9C /* Pods-Nanameue Mini App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nanameue Mini App.debug.xcconfig"; path = "Target Support Files/Pods-Nanameue Mini App/Pods-Nanameue Mini App.debug.xcconfig"; sourceTree = "<group>"; };
 		E4AA052CF754F083EEBEFB3B /* Pods-Nanameue Mini App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nanameue Mini App.release.xcconfig"; path = "Target Support Files/Pods-Nanameue Mini App/Pods-Nanameue Mini App.release.xcconfig"; sourceTree = "<group>"; };
 		EE8531CDEF0BF9B3D39D6C64 /* Pods_Nanameue_Mini_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nanameue_Mini_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,7 @@
 				904DB5332999758600704C08 /* UploadImage.swift */,
 				904DB5352999796B00704C08 /* AuthenticationService.swift */,
 				903555EB299BEA27008E34D5 /* ProfileService.swift */,
+				90A5B7E3299D6A6900FB4F99 /* PostService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				904DB5302999272600704C08 /* AuthenticationViewModel.swift in Sources */,
 				904DB52C2998EBC300704C08 /* LoginController.swift in Sources */,
 				9073F23A29969CE6003143B2 /* AppDelegate.swift in Sources */,
+				90A5B7E4299D6A6900FB4F99 /* PostService.swift in Sources */,
 				904DB51F2997AF9200704C08 /* NotificationController.swift in Sources */,
 				904DB4F72997AA8C00704C08 /* MainTabController.swift in Sources */,
 				904DB53D299A8FB400704C08 /* ProfileHeader.swift in Sources */,

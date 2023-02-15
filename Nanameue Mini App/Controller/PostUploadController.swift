@@ -9,9 +9,16 @@ import Foundation
 import UIKit
 import YPImagePicker
 
+protocol PostUploadProtocol: AnyObject {
+    func controllerDidFinishTask(_ controller: PostUploadController)
+}
+
 class PostUploadController: UIViewController, UIPickerViewDelegate {
     
     //MARK: - Properties
+    
+    private let textPostLimit: Int = 400
+    weak var delegate: PostUploadProtocol?
     
     private var postImage: UIImage? {
         didSet {
@@ -61,7 +68,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         return textField
     }()
     
-    let nameLabel: UILabel = {
+    let dummyLabel: UILabel = {
         let label = UILabel()
         label.text = "Public post"
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -72,11 +79,11 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         return label
     }()
     
-    private let textLengthCount: UILabel = {
+    private lazy var textLengthCount: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 15)
-        label.text = "0/250"
+        label.text = "0/\(textPostLimit)"
         return label
     }()
     
@@ -126,13 +133,13 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         profileImageView.setDimensions(height: 40, width: 40)
         profileImageView.layer.cornerRadius = 40 / 2
         
-        view.addSubview(nameLabel)
-        nameLabel.centerY(inView: profileImageView)
-        nameLabel.anchor(left: profileImageView.rightAnchor, paddingLeft: 12)
+        view.addSubview(dummyLabel)
+        dummyLabel.centerY(inView: profileImageView)
+        dummyLabel.anchor(left: profileImageView.rightAnchor, paddingLeft: 12)
         
         view.addSubview(postTextField)
         postTextField.setDimensions(height: 200, width: view.frame.width)
-        postTextField.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingLeft: 52, paddingRight: 8)
+        postTextField.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingLeft: 55, paddingRight: 8)
         postTextField.delegate = self
         
         view.addSubview(selectedPicture)
@@ -140,7 +147,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         selectedPicture.anchor(top: postTextField.bottomAnchor,
                                left: view.leftAnchor,
                                paddingTop: 12,
-                               paddingLeft: 52,
+                               paddingLeft: 55,
                                width: view.layer.frame.width / 3,
                                height: 200)
         
@@ -160,14 +167,11 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     }
     
     //MARK: - Helper functions
+    
     func checkTextViewLength(_ textView: UITextView, maxLength: Int){
         if (textView.text.count > maxLength){
             textView.deleteBackward()
         }
-    }
-    
-    func addImageRemoveBtn() {
-        
     }
     
     func finishedPickingThePhoto(_ picker: YPImagePicker){
@@ -182,11 +186,30 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     //MARK: - actions
     
     @objc func cancelSheetBtnPressed() {
-        self.dismiss(animated: true)
+        self.delegate?.controllerDidFinishTask(self)
     }
     
     @objc func postBtnPressed() {
+        guard let postText = postTextField.text else {return}
         
+        if (postImage != nil){
+            guard let postImage = postImage else {return}
+            PostService.uploadPostWithImage(postText: postText, postImage: postImage) { error in
+                if let error = error {
+                    print ("error in uploading the post with image \(error)" )
+                }
+                
+                self.delegate?.controllerDidFinishTask(self)
+            }
+        } else {
+            PostService.uploadPost(postText: postText) { error in
+                if let error = error {
+                    print ("error in uploading the post \(error)")
+                }
+                
+                self.delegate?.controllerDidFinishTask(self)
+            }
+        }
     }
     
     @objc func addPictureBtnPressed() {
@@ -221,8 +244,8 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
 
 extension PostUploadController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        checkTextViewLength(textView, maxLength: 200)
-        textLengthCount.text = "\(textView.text.count)/200"
+        checkTextViewLength(textView, maxLength: textPostLimit)
+        textLengthCount.text = "\(textView.text.count)/\(textPostLimit)"
         
         if (textView.text.count > 0){
             postBtn.backgroundColor = UIColor(named: "main_color")

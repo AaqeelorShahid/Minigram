@@ -102,10 +102,18 @@ extension MainTabController: UITabBarControllerDelegate {
         //TODO: - if removed the search and notification tab, please change the index of post maker below
         if selectedTabIndex == 2 {
             let controller = PostUploadController()
+            controller.delegate = self
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true)
         }
         
         return true
+    }
+}
+
+extension MainTabController: PostUploadProtocol {
+    func controllerDidFinishTask(_ controller: PostUploadController) {
+        selectedIndex = 0
+        controller.dismiss(animated: true)
     }
 }
