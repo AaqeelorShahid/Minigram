@@ -39,4 +39,13 @@ struct PostService {
         
     }
     
+    static func fetchPosts(completion: @escaping ([PostModel]) -> Void) {
+        COLLECTION_POST.getDocuments { snapshot, err in
+            guard let docs = snapshot?.documents else {return}
+            
+            let posts = docs.map({ PostModel(postId: $0.documentID, dic: $0.data())})
+            completion(posts)
+        }
+    }
+    
 }

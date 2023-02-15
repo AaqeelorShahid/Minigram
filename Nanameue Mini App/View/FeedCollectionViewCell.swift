@@ -10,6 +10,10 @@ import UIKit
 
 class FeedCollectionViewCell: UICollectionViewCell {
     
+    var postViewModel: PostViewModel? {
+        didSet {initCell()}
+    }
+    
     //MARK: - Properties
     
     private let profileImageView: UIImageView = {
@@ -89,6 +93,8 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    //MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -107,21 +113,21 @@ class FeedCollectionViewCell: UICollectionViewCell {
         menuButton.setDimensions(height: 20, width: 20)
         
         addSubview(postText)
-        postText.anchor(top: profileImageView.bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 8, paddingRight: 8)
+        postText.anchor(top: profileImageView.bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingRight: 12)
         
         addSubview(postImage)
         postImage.anchor(top: postText.bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingTop: 12)
         postImage.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
         addSubview(likeButton)
-        likeButton.anchor(top: postImage.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 8)
+        likeButton.anchor(top: postImage.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
         likeButton.setDimensions(height: 25, width: 25)
         
         addSubview(likeCountText)
-        likeCountText.centerY(inView: likeButton, leftAnchor: likeButton.rightAnchor, paddingLeft: 8)
+        likeCountText.centerY(inView: likeButton, leftAnchor: likeButton.rightAnchor, paddingLeft: 12)
         
         addSubview(postedTimeStamp)
-        postedTimeStamp.anchor(top: postImage.bottomAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 8)
+        postedTimeStamp.anchor(top: postImage.bottomAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 12)
         
         addSubview(separatorView)
         separatorView.anchor(top: likeButton.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingBottom: 12, height: 1)
@@ -129,6 +135,33 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Helper functions
+    
+    func initCell() {
+        guard let viewModel = postViewModel else {return}
+        
+        if (viewModel.postText.isEmpty) {
+            // Image only post
+            postText.isHidden = true
+            postImage.sd_setImage(with: URL(string: viewModel.imageUrl))
+            
+            postImage.anchor(top: profileImageView.bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingTop: 12)
+            postImage.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+            
+        } else if (viewModel.imageUrl.isEmpty) {
+            // Text only post
+            postText.text = viewModel.postText
+            postImage.image = nil
+            postImage.isHidden = true
+            
+            likeButton.anchor(top: postText.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
+            
+        } else {
+            postText.text = viewModel.postText
+            postImage.sd_setImage(with: URL(string: viewModel.imageUrl))
+        }
     }
     
     
@@ -144,11 +177,5 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     @objc func menuBtnPressed() {
         print ("like pressed")
-    }
-    
-    //MARK: - Helpers
-    
-    func initActionButtons() {
-         
     }
 }

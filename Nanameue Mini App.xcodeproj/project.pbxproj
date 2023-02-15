@@ -35,6 +35,8 @@
 		9073F24329969CE8003143B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24229969CE8003143B2 /* Assets.xcassets */; };
 		9073F24629969CE8003143B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24429969CE8003143B2 /* LaunchScreen.storyboard */; };
 		90A5B7E4299D6A6900FB4F99 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E3299D6A6900FB4F99 /* PostService.swift */; };
+		90A5B7E6299D87EF00FB4F99 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E5299D87EF00FB4F99 /* PostModel.swift */; };
+		90A5B7E8299D8B9200FB4F99 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		9073F24529969CE8003143B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9073F24729969CE8003143B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90A5B7E3299D6A6900FB4F99 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		90A5B7E5299D87EF00FB4F99 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		E3CD077D9D1093A07DD49C9C /* Pods-Nanameue Mini App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nanameue Mini App.debug.xcconfig"; path = "Target Support Files/Pods-Nanameue Mini App/Pods-Nanameue Mini App.debug.xcconfig"; sourceTree = "<group>"; };
 		E4AA052CF754F083EEBEFB3B /* Pods-Nanameue Mini App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nanameue Mini App.release.xcconfig"; path = "Target Support Files/Pods-Nanameue Mini App/Pods-Nanameue Mini App.release.xcconfig"; sourceTree = "<group>"; };
 		EE8531CDEF0BF9B3D39D6C64 /* Pods_Nanameue_Mini_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nanameue_Mini_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				904DB52F2999272600704C08 /* AuthenticationViewModel.swift */,
+				90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				903555EF299BEC42008E34D5 /* UserModel.swift */,
+				90A5B7E5299D87EF00FB4F99 /* PostModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,7 +348,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A5B7E8299D8B9200FB4F99 /* PostViewModel.swift in Sources */,
 				903555F6299C1EB4008E34D5 /* PostUploadController.swift in Sources */,
+				90A5B7E6299D87EF00FB4F99 /* PostModel.swift in Sources */,
 				904DB52E2998FF7B00704C08 /* CustomTextField.swift in Sources */,
 				903555FA299C310D008E34D5 /* MultiLineInputTextView.swift in Sources */,
 				903555EE299BEA3D008E34D5 /* Constants.swift in Sources */,

@@ -13,11 +13,19 @@ private let cellIdentifier = "cell"
 
 class MainFeedController: UICollectionViewController {
     
+    //MARK: - Properties
     
+    private var posts = [PostModel]()
+    
+    //MARK: - Lifecycle
+
     override func viewDidLoad() {
         view.backgroundColor = .white
         initUI()
+        fetchPosts()
     }
+    
+    //MARK: - Helper functions
     
     func initUI() {
         collectionView.backgroundColor = .white
@@ -27,6 +35,14 @@ class MainFeedController: UICollectionViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
     }
     
+    func fetchPosts() {
+        PostService.fetchPosts { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
+    }
+    
+    //MARK: - Actions
     @objc func logout () {
         do {
             try Auth.auth().signOut()
@@ -41,7 +57,6 @@ class MainFeedController: UICollectionViewController {
         }
         
     }
-    
 }
 
 // MARK: - UICollectionView Data Source
@@ -49,11 +64,24 @@ class MainFeedController: UICollectionViewController {
 extension MainFeedController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FeedCollectionViewCell
+        
+//        let currentPost = posts[indexPath.row]
+//        if (currentPost.postText.isEmpty) {
+//            // Image only post
+//            
+//        } else if (currentPost.postImageUrl.isEmpty) {
+//            // Text only post
+//        } else {
+//            
+//        }
+        
+        cell.postViewModel = PostViewModel(post: posts[indexPath.row])
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
 }
 
@@ -61,16 +89,27 @@ extension MainFeedController {
 
 extension MainFeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = view.frame.width
-        var height = width + 8 + 40 + 8
-        height += 110
+        var height: CGFloat!
         
+        let currentPost = posts[indexPath.row]
+        if (currentPost.postText.isEmpty) {
+            // Image only post
+            height = width + 105
+            
+        } else if (currentPost.postImageUrl.isEmpty) {
+            // Text only post
+            let textHeight = currentPost.postText.height(withConstrainedWidth: width, font: UIFont.systemFont(ofSize: 18))
+            height = textHeight + 20 + 80
+        } else {
+            let textHeight = currentPost.postText.height(withConstrainedWidth: width - 24, font: UIFont.systemFont(ofSize: 16))
+            height = textHeight + width + 120
+        }
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
 
 }
