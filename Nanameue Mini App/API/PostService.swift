@@ -27,7 +27,6 @@ struct PostService {
     }
     
     static func uploadPost(postText: String, user: UserModel, completion: @escaping (FirestoreCompletion)) {
-        
         let data = ["timeStamp" : Timestamp(date: Date()),
                     "postText" : postText,
                     "likes": 0,
@@ -48,16 +47,35 @@ struct PostService {
         }
     }
     
-    static func fetchPosts(forUser userId: String , completion: @escaping ([PostModel]) -> Void) {
+    static func fetchPosts(forUser userId: String, completion: @escaping ([PostModel]) -> Void) {
         COLLECTION_POST
             .whereField("postedBy", isEqualTo: userId)
             .getDocuments {
-                snapshot, err in
+                snapshot, error in
                 
-            guard let docs = snapshot?.documents else {return}
+                guard let docs = snapshot?.documents else {return}
+                if let error = error {
+                    print ("error in \(error)")
+                }
+                
+                var posts = docs.map({ PostModel(postId: $0.documentID, dic: $0.data())})
             
-            let posts = docs.map({ PostModel(postId: $0.documentID, dic: $0.data())})
-            completion(posts)
+                posts.sort{ (post1, post2) -> Bool in
+                    return post1.timeStamp.seconds > post2.timeStamp.seconds
+                }
+                
+                completion(posts)
+            }
+    }
+    
+    static func removePost(withId postId: String, completion: @escaping (Bool) -> Void) {
+        COLLECTION_POST.document(postId).delete() { error in
+            if let error = error {
+                print ("Issue in removing post: \(error)")
+                completion(false)
+            }
+            
+            completion(true)
         }
     }
     

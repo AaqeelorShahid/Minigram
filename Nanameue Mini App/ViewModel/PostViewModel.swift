@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 struct PostViewModel {
-    private let post: PostModel
+    var post: PostModel
     
     var imageUrl: String {
         return post.postImageUrl
@@ -39,7 +39,7 @@ struct PostViewModel {
         if post.likes != 1 {
             return "\(post.likes) likes"
         } else {
-            return "\(post.likes) like"
+            return "\(post.likes) likes"
         }
     }
     

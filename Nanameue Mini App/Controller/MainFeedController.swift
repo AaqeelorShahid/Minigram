@@ -16,11 +16,10 @@ private let postCellIdentifier = "post_cell"
 class MainFeedController: UICollectionViewController {
     
     //MARK: - Properties
-    
     private var posts = [PostModel]()
     
     //MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         view.backgroundColor = .white
         initUI()
@@ -81,22 +80,28 @@ extension MainFeedController {
         
         let currentPost = posts[indexPath.row]
         if (currentPost.postText.isEmpty) {
+            // Image only post
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageOnlyCellIdentifier, for: indexPath) as! ImageOnlyPostCell
             cell.postViewModel = PostViewModel(post: posts[indexPath.row])
             cell.enableMenu = false
+            cell.delegate = self
             return cell
         } else if (currentPost.postImageUrl.isEmpty) {
+            // Text only post
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textOnlyCellIdentifier, for: indexPath) as! TextOnlyPostCell
             cell.postViewModel = PostViewModel(post: posts[indexPath.row])
             cell.enableMenu = false
+            cell.delegate = self
             return cell
         } else {
+            // Regular post
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: postCellIdentifier, for: indexPath) as! FeedCollectionViewCell
             cell.postViewModel = PostViewModel(post: posts[indexPath.row])
             cell.enableMenu = false
+            cell.delegate = self
             return cell
         }
-    
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -128,7 +133,49 @@ extension MainFeedController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        // Minimum space between post/cell
         return 10
     }
+    
+}
 
+// MARK: - FeedCollectionViewDelegate
+
+extension MainFeedController: CommonFeedCellDelegate {
+    func cell(_ cell: UICollectionViewCell, likedThisPost post: PostModel, from: Int) {
+        if (from == FROM_REGULAR_POST_CELL) {
+            
+            let currentCell = cell as! FeedCollectionViewCell
+            currentCell.postViewModel?.post.didLike.toggle()
+            if post.didLike {
+                print("post unliked \(post.didLike)")
+            } else {
+                print("post liked \(post.didLike)")
+            }
+            
+        } else if (from == FROM_TEXT_ONLY_POST_CELL){
+            
+            let currentCell = cell as! TextOnlyPostCell
+            currentCell.postViewModel?.post.didLike.toggle()
+            if post.didLike {
+                print("post unliked \(post.didLike)")
+            } else {
+                print("post liked \(post.didLike)")
+            }
+            
+        } else if (from == FROM_IMAGE_ONLY_POST_CELL){
+            
+            let currentCell = cell as! ImageOnlyPostCell
+            currentCell.postViewModel?.post.didLike.toggle()
+            if post.didLike {
+                print("post unliked \(post.didLike)")
+            } else {
+                print("post liked \(post.didLike)")
+            }
+            
+        }
+    }
+    
+    func cell(_ cell: UICollectionViewCell, menuOpened post: PostModel, from: Int) {
+    }
 }

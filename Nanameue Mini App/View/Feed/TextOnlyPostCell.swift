@@ -10,6 +10,10 @@ import UIKit
 
 class TextOnlyPostCell: UICollectionViewCell {
     
+    //MARK: - Properties
+    
+    weak var delegate: CommonFeedCellDelegate?
+    
     var postViewModel: PostViewModel? {
         didSet {configureCell()}
     }
@@ -24,8 +28,6 @@ class TextOnlyPostCell: UICollectionViewCell {
             }
         }
     }
-    
-    //MARK: - Properties
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -158,23 +160,12 @@ class TextOnlyPostCell: UICollectionViewCell {
     }
     
     @objc func likeBtnPressed() {
-        print ("like pressed")
+        guard let postModel = postViewModel else {return}
+        delegate?.cell(self, likedThisPost: postModel.post, from: FROM_TEXT_ONLY_POST_CELL)
     }
     
     @objc func menuBtnPressed() {
-//        let alert = UIAlertController(title: "Delete Post", message: "Are you sure you want to delete this post?", preferredStyle: .alert)
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-//            // Handle cancel action
-//        }
-//
-//        let deleteAction = UIAlertAction(title: "Delete Post", style: .destructive) { (action) in
-//            // Handle delete action
-//        }
-//
-//        alert.addAction(cancelAction)
-//        alert.addAction(deleteAction)
-//
-//        present(alert, animated: true, completion: nil)
+        guard let postModel = postViewModel else {return}
+        delegate?.cell(self, menuOpened: postModel.post, from: FROM_TEXT_ONLY_POST_CELL)
     }
 }

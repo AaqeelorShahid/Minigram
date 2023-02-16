@@ -15,9 +15,9 @@ struct PostModel {
     let profilePicture: String
     let name: String
     let postedBy: String
-    var postText: String
     let postImageUrl: String
-
+    var postText: String
+    var didLike = false
     
     init(postId:String, dic: [String: Any]) {
         self.postId = postId 

@@ -10,3 +10,9 @@ import FirebaseFirestore
 
 let COLLECTION_USERS = Firestore.firestore().collection("users")
 let COLLECTION_POST = Firestore.firestore().collection("posts")
+
+let FROM_REGULAR_POST_CELL = 0
+let FROM_TEXT_ONLY_POST_CELL = 1
+let FROM_IMAGE_ONLY_POST_CELL = 2
+
+

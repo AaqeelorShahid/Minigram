@@ -58,6 +58,7 @@ extension UILabel {
     }
 }
 
+//This extension is used to calculate the height of given String based on font and font size
 extension String {
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
@@ -74,9 +75,9 @@ extension String {
     }
 }
 
+// Not going to use this extension still it might be useful in future
 extension UIImageView {
     public func imageFromURL(urlString: String) {
-
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         activityIndicator.startAnimating()
@@ -100,6 +101,7 @@ extension UIImageView {
     }
 }
 
+//This extension will convert given Timestamp to Time ago format text
 extension Date {
     func getTimeAgo() -> String {
         let formatter = RelativeDateTimeFormatter()
@@ -109,7 +111,6 @@ extension Date {
 }
 
 // Below extenson basically it's a class which add constrains to views
-
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
