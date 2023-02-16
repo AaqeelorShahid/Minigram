@@ -157,6 +157,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
             postImage.isHidden = true
             
             likeButton.anchor(top: postText.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
+            postedTimeLabel.anchor(top: postText.bottomAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 12)
             
         } else {
             postText.text = viewModel.postText
