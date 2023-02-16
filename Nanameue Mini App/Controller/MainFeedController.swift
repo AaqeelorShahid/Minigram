@@ -40,8 +40,10 @@ class MainFeedController: UICollectionViewController {
     }
     
     func fetchPosts() {
+        showLoading(true)
         PostService.fetchPosts { posts in
             self.posts = posts
+            self.showLoading(false)
             self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
@@ -63,7 +65,6 @@ class MainFeedController: UICollectionViewController {
     }
     
     @objc func refreshFeed() {
-//        posts.removeAll()
         fetchPosts()
     }
 }
@@ -74,6 +75,7 @@ extension MainFeedController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FeedCollectionViewCell
         cell.postViewModel = PostViewModel(post: posts[indexPath.row])
+        cell.enableMenu = false
         return cell
     }
     

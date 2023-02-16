@@ -14,6 +14,17 @@ class FeedCollectionViewCell: UICollectionViewCell {
         didSet {initCell()}
     }
     
+    var enableMenu: Bool? {
+        didSet {
+            guard let status = enableMenu else {return}
+            if status {
+                menuButton.isHidden = false
+            } else {
+                menuButton.isHidden = true
+            }
+        }
+    }
+    
     //MARK: - Properties
     
     private let profileImageView: UIImageView = {
@@ -38,6 +49,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "menu_icon"), for: .normal)
         button.tintColor = .black
+//        button.isHidden = true
         button.addTarget(self, action: #selector(menuBtnPressed), for: .touchUpInside)
         return button
     }()
@@ -189,6 +201,19 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func menuBtnPressed() {
-        print ("like pressed")
+//        let alert = UIAlertController(title: "Delete Post", message: "Are you sure you want to delete this post?", preferredStyle: .alert)
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+//            // Handle cancel action
+//        }
+//
+//        let deleteAction = UIAlertAction(title: "Delete Post", style: .destructive) { (action) in
+//            // Handle delete action
+//        }
+//
+//        alert.addAction(cancelAction)
+//        alert.addAction(deleteAction)
+//
+//        present(alert, animated: true, completion: nil)
     }
 }

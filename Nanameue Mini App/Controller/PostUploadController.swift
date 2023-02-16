@@ -19,7 +19,12 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     
     private let textPostLimit: Int = 400
     weak var delegate: PostUploadProtocol?
-    var userModel: UserModel?
+    var userModel: UserModel? {
+        didSet{
+            guard let profileUrl = userModel?.profileUrl else {return}
+            profileImageView.sd_setImage(with: URL(string: profileUrl))
+        }
+    }
     
     private var postImage: UIImage? {
         didSet {
@@ -64,7 +69,6 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
-        imageView.image = UIImage(named: "profile")
         return imageView
     }()
     
@@ -209,9 +213,10 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     }
     
     @objc func postBtnPressed() {
-        showLoading(true)
         guard let postText = postTextField.text else {return}
         guard let user = userModel else {return}
+        
+        showLoading(true)
         
         if (postImage != nil){
             guard let postImage = postImage else {return}

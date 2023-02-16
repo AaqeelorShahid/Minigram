@@ -48,4 +48,17 @@ struct PostService {
         }
     }
     
+    static func fetchPosts(forUser userId: String , completion: @escaping ([PostModel]) -> Void) {
+        COLLECTION_POST
+            .whereField("postedBy", isEqualTo: userId)
+            .getDocuments {
+                snapshot, err in
+                
+            guard let docs = snapshot?.documents else {return}
+            
+            let posts = docs.map({ PostModel(postId: $0.documentID, dic: $0.data())})
+            completion(posts)
+        }
+    }
+    
 }

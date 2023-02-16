@@ -16,7 +16,7 @@ class MainTabController: UITabBarController {
     private var model: UserModel? {
         didSet {
             guard let model: UserModel else {return}
-            configureViewController(model: model)
+            configureTabViewController(model: model)
         }
     }
     
@@ -56,7 +56,7 @@ class MainTabController: UITabBarController {
     }
     
     
-    func configureViewController(model: UserModel) {
+    func configureTabViewController(model: UserModel) {
         self.delegate = self
         view.backgroundColor = .white
         
@@ -122,5 +122,10 @@ extension MainTabController: PostUploadProtocol {
         selectedIndex = 0
         controller.dismiss(animated: true)
         showLoading(false)
+        
+        //Refreshing the feed/timeline after posting new post
+        guard let navigationController = viewControllers?.first as? UINavigationController else {return}
+        guard let feedNavigationController = navigationController.viewControllers.first as? MainFeedController else {return}
+        feedNavigationController.refreshFeed()
     }
 }

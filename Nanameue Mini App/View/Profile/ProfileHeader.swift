@@ -158,7 +158,7 @@ class ProfileHeader: UICollectionReusableView {
         addSubview(separatorView)
         separatorView.anchor(top: editProfileBtn.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, height: 1)
         
-        let profilSectionStack = UIStackView(arrangedSubviews: [likeSectionButton, postSectionButton])
+        let profilSectionStack = UIStackView(arrangedSubviews: [postSectionButton, likeSectionButton])
         addSubview(profilSectionStack)
         profilSectionStack.distribution = .fillEqually
         profilSectionStack.anchor(top: separatorView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12)
