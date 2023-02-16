@@ -106,6 +106,7 @@ extension MainTabController: UITabBarControllerDelegate {
         if selectedTabIndex == 2 {
             let controller = PostUploadController()
             controller.delegate = self
+            controller.userModel = model
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true)
         }

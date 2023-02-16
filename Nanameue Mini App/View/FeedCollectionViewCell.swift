@@ -76,7 +76,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let postedTimeStamp: UILabel = {
+    private let postedTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "6h ago"
         label.textColor = .systemGray2
@@ -124,10 +124,10 @@ class FeedCollectionViewCell: UICollectionViewCell {
         likeButton.setDimensions(height: 25, width: 25)
         
         addSubview(likeCountText)
-        likeCountText.centerY(inView: likeButton, leftAnchor: likeButton.rightAnchor, paddingLeft: 12)
+        likeCountText.centerY(inView: likeButton, leftAnchor: likeButton.rightAnchor, paddingLeft: 8)
         
-        addSubview(postedTimeStamp)
-        postedTimeStamp.anchor(top: postImage.bottomAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 12)
+        addSubview(postedTimeLabel)
+        postedTimeLabel.anchor(top: postImage.bottomAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 12)
         
         addSubview(separatorView)
         separatorView.anchor(top: likeButton.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingBottom: 12, height: 1)
@@ -162,6 +162,18 @@ class FeedCollectionViewCell: UICollectionViewCell {
             postText.text = viewModel.postText
             postImage.sd_setImage(with: URL(string: viewModel.imageUrl))
         }
+        
+        //Setting posted time
+        let date = viewModel.timeStamp.dateValue()
+        let postedTimeAgo = date.getTimeAgo()
+        postedTimeLabel.text = postedTimeAgo
+        
+        //user details of the post
+        profileImageView.sd_setImage(with: URL(string: viewModel.profilePicture))
+        usernameButton.setTitle(viewModel.name, for: .normal)
+        
+        //like
+        likeCountText.text = viewModel.likeLabelString
     }
     
     

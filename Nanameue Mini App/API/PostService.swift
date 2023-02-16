@@ -11,32 +11,32 @@ import FirebaseAuth
 
 struct PostService {
     
-    static func uploadPostWithImage(postText: String, postImage: UIImage, completion: @escaping (FirestoreCompletion)) {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        
+    static func uploadPostWithImage(postText: String, user: UserModel, postImage: UIImage, completion: @escaping (FirestoreCompletion)) {
         ImageUploader.uploadImageToStorage(image: postImage) { imageUrl in
             
             let data = ["timeStamp" : Timestamp(date: Date()),
                         "postText" : postText,
                         "likes": 0,
+                        "profilePicture": user.profileUrl,
+                        "name": user.name,
                         "postImageUrl": imageUrl,
-                        "postedBy": uid] as [String: Any]
+                        "postedBy": user.uid] as [String: Any]
             
             COLLECTION_POST.addDocument(data: data, completion: completion)
         }
     }
     
-    static func uploadPost(postText: String, completion: @escaping (FirestoreCompletion)) {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
+    static func uploadPost(postText: String, user: UserModel, completion: @escaping (FirestoreCompletion)) {
         
         let data = ["timeStamp" : Timestamp(date: Date()),
                     "postText" : postText,
                     "likes": 0,
+                    "profilePicture": user.profileUrl,
+                    "name": user.name,
                     "postImageUrl": "",
-                    "postedBy": uid] as [String: Any]
+                    "postedBy": user.uid] as [String: Any]
         
         COLLECTION_POST.addDocument(data: data, completion: completion)
-        
     }
     
     static func fetchPosts(completion: @escaping ([PostModel]) -> Void) {

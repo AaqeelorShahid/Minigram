@@ -12,6 +12,8 @@ struct PostModel {
     let postId: String
     let timeStamp: Timestamp
     let likes: Int
+    let profilePicture: String
+    let name: String
     let postedBy: String
     var postText: String
     let postImageUrl: String
@@ -21,6 +23,8 @@ struct PostModel {
         self.postId = postId 
         self.postText = dic["postText"] as? String ?? ""
         self.postImageUrl = dic["postImageUrl"] as? String ?? ""
+        self.profilePicture = dic["profilePicture"] as? String ?? ""
+        self.name = dic["name"] as? String ?? ""
         self.timeStamp = dic["timeStamp"] as? Timestamp ?? Timestamp(date: Date())
         self.postedBy = dic["postedBy"] as? String ?? ""
         self.likes = dic["likes"] as? Int ?? 0

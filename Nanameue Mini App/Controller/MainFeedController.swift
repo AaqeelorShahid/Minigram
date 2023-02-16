@@ -64,19 +64,7 @@ class MainFeedController: UICollectionViewController {
 extension MainFeedController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FeedCollectionViewCell
-        
-//        let currentPost = posts[indexPath.row]
-//        if (currentPost.postText.isEmpty) {
-//            // Image only post
-//            
-//        } else if (currentPost.postImageUrl.isEmpty) {
-//            // Text only post
-//        } else {
-//            
-//        }
-        
         cell.postViewModel = PostViewModel(post: posts[indexPath.row])
-        
         return cell
     }
     

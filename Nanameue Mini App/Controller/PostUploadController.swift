@@ -19,6 +19,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     
     private let textPostLimit: Int = 400
     weak var delegate: PostUploadProtocol?
+    var userModel: UserModel?
     
     private var postImage: UIImage? {
         didSet {
@@ -210,10 +211,11 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     @objc func postBtnPressed() {
         showLoading(true)
         guard let postText = postTextField.text else {return}
+        guard let user = userModel else {return}
         
         if (postImage != nil){
             guard let postImage = postImage else {return}
-            PostService.uploadPostWithImage(postText: postText, postImage: postImage) { error in
+            PostService.uploadPostWithImage(postText: postText, user: user, postImage: postImage) { error in
                 if let error = error {
                     print ("error in uploading the post with image \(error)" )
                 }
@@ -221,7 +223,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
                 self.delegate?.controllerDidFinishTask(self)
             }
         } else {
-            PostService.uploadPost(postText: postText) { error in
+            PostService.uploadPost(postText: postText, user: user) { error in
                 if let error = error {
                     print ("error in uploading the post \(error)")
                 }
