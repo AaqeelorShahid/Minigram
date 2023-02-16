@@ -183,14 +183,14 @@ extension ProfileController: CommonFeedCellDelegate {
         }
         let deleteAction = UIAlertAction(title: "Delete Post", style: .destructive) { (action) in
             self.showLoading(true)
-            PostService.removePost(withId: post.postId) { status in
-                
-                self.showLoading(false)
-                if status {
-                    self.fetchPosts()
+            PostService.removePost(withId: post.postId) { error in
+                if let error = error {
+                    print ("Error in removing post: \(error)")
                 }
-                
             }
+            
+            self.showLoading(false)
+            self.fetchPosts()
         }
         
         alert.addAction(cancelAction)

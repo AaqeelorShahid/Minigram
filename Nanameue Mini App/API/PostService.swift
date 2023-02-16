@@ -68,14 +68,11 @@ struct PostService {
             }
     }
     
-    static func removePost(withId postId: String, completion: @escaping (Bool) -> Void) {
+    static func removePost(withId postId: String, completion: @escaping FirestoreCompletion) {
         COLLECTION_POST.document(postId).delete() { error in
             if let error = error {
-                print ("Issue in removing post: \(error)")
-                completion(false)
+                completion(error)
             }
-            
-            completion(true)
         }
     }
     
