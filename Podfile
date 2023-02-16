@@ -10,8 +10,6 @@ target 'Nanameue Mini App' do
 	pod 'FirebaseAuth'
 	pod 'FirebaseFirestore'
 	pod 'FirebaseStorage'
-	pod 'FirebaseCrashlytics'
-	pod 'FirebaseMessaging'
   pod 'SDWebImage'
   pod 'YPImagePicker'
   pod 'JGProgressHUD'

@@ -146,19 +146,12 @@ class ImageOnlyPostCell: UICollectionViewCell {
         profileImageView.sd_setImage(with: URL(string: viewModel.profilePicture), placeholderImage: UIImage(named: "profile_placeholder"))
         usernameButton.setTitle(viewModel.name, for: .normal)
         
-        //like
-        likeCountText.text = viewModel.likeLabelString
-        
         postImage.sd_setImage(with: URL(string: viewModel.imageUrl), placeholderImage: UIImage(named: "post_image_placeholder"))
         
-        postImage.anchor(top: profileImageView.bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingTop: 12)
-        postImage.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        
-        if (viewModel.post.didLike){
-            likeButton.setImage(UIImage(named: "like_selected"), for: .normal)
-        } else {
-            likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
-        }
+        //like
+        likeCountText.text = viewModel.likeLabelString
+        likeButton.tintColor = viewModel.likeBtnTint
+        likeButton.setImage(viewModel.likeImage, for: .normal)
     }
     
     

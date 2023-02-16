@@ -143,15 +143,12 @@ class TextOnlyPostCell: UICollectionViewCell {
         profileImageView.sd_setImage(with: URL(string: viewModel.profilePicture), placeholderImage: UIImage(named: "profile_placeholder"))
         usernameButton.setTitle(viewModel.name, for: .normal)
         
-        //like
-        likeCountText.text = viewModel.likeLabelString
         postText.text = viewModel.postText
         
-        if (viewModel.post.didLike){
-            likeButton.setImage(UIImage(named: "like_selected"), for: .normal)
-        } else {
-            likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
-        }
+        //like
+        likeCountText.text = viewModel.likeLabelString
+        likeButton.tintColor = viewModel.likeBtnTint
+        likeButton.setImage(viewModel.likeImage, for: .normal)
         
     }
     

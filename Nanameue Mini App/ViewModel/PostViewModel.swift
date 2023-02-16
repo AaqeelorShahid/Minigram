@@ -35,11 +35,19 @@ struct PostViewModel {
         return post.likes
     }
     
+    var likeImage: UIImage? {
+        return post.didLike ? UIImage(named: "like_selected") : UIImage(named: "like_selected")
+    }
+    
+    var likeBtnTint: UIColor? {
+        return post.didLike ? UIColor.red : UIColor.gray
+    }
+    
     var likeLabelString: String {
         if post.likes != 1 {
             return "\(post.likes) likes"
         } else {
-            return "\(post.likes) likes"
+            return "\(post.likes) like"
         }
     }
     

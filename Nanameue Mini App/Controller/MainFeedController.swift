@@ -154,19 +154,24 @@ extension MainFeedController: UICollectionViewDelegateFlowLayout {
         if (currentPost.postText.isEmpty) {
             // Image only post
             height = width + 105
-            
+        
         } else if (currentPost.postImageUrl.isEmpty) {
+            
             // Text only post
             let textHeight = currentPost.postText.height(withConstrainedWidth: width, font: UIFont.systemFont(ofSize: 18))
             height = textHeight + 20 + 80
+            
         } else {
+            
             let textHeight = currentPost.postText.height(withConstrainedWidth: width - 24, font: UIFont.systemFont(ofSize: 16))
             height = textHeight + width + 120
+            
         }
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
         // Minimum space between post/cell
         return 10
     }
@@ -186,7 +191,6 @@ extension MainFeedController: CommonFeedCellDelegate {
             currentCell.postViewModel?.post.likes = post.didLike ? like - 1 : like + 1
             
             handleLikeAction(post: post)
-            
             
         } else if (from == FROM_TEXT_ONLY_POST_CELL){
             

@@ -18,7 +18,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     
     weak var delegate: CommonFeedCellDelegate?
-    
     var postViewModel: PostViewModel? {
         didSet {configureCell()}
     }
@@ -82,7 +81,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = -1
+        label.numberOfLines = 1
         return label
     }()
     
@@ -90,7 +89,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = -1
+        label.numberOfLines = 1
         return label
     }()
     
@@ -159,18 +158,14 @@ class FeedCollectionViewCell: UICollectionViewCell {
         //user details of the post
         profileImageView.sd_setImage(with: URL(string: viewModel.profilePicture), placeholderImage: UIImage(named: "profile_placeholder"))
         usernameButton.setTitle(viewModel.name, for: .normal)
-        
-        //like
-        likeCountText.text = viewModel.likeLabelString
-        
+
         postText.text = viewModel.postText
         postImage.sd_setImage(with: URL(string: viewModel.imageUrl), placeholderImage: UIImage(named: "post_image_placeholder"))
         
-        if (viewModel.post.didLike){
-            likeButton.setImage(UIImage(named: "like_selected"), for: .normal)
-        } else {
-            likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
-        }
+        //like
+        likeCountText.text = viewModel.likeLabelString
+        likeButton.tintColor = viewModel.likeBtnTint
+        likeButton.setImage(viewModel.likeImage, for: .normal)
         
     }
     
