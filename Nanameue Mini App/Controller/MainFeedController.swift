@@ -33,17 +33,22 @@ class MainFeedController: UICollectionViewController {
         
         navigationItem.title = "Minigram"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        
+        let UIRefresher = UIRefreshControl()
+        UIRefresher.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+        collectionView.refreshControl = UIRefresher
     }
     
     func fetchPosts() {
         PostService.fetchPosts { posts in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
     
     //MARK: - Actions
-    @objc func logout () {
+    @objc func logout() {
         do {
             try Auth.auth().signOut()
             let controller = LoginController()
@@ -55,7 +60,11 @@ class MainFeedController: UICollectionViewController {
         } catch {
             print ("Error - logout")
         }
-        
+    }
+    
+    @objc func refreshFeed() {
+//        posts.removeAll()
+        fetchPosts()
     }
 }
 
