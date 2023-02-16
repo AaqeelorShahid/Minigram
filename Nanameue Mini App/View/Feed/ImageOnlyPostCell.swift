@@ -62,8 +62,6 @@ class ImageOnlyPostCell: UICollectionViewCell {
     
     private lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "like_unselected"), for: .normal)
-        button.tintColor = .systemGray2
         button.addTarget(self, action: #selector(likeBtnPressed), for: .touchUpInside)
         return button
     }()
@@ -156,6 +154,11 @@ class ImageOnlyPostCell: UICollectionViewCell {
         postImage.anchor(top: profileImageView.bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingTop: 12)
         postImage.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
+        if (viewModel.post.didLike){
+            likeButton.setImage(UIImage(named: "like_selected"), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
+        }
     }
     
     

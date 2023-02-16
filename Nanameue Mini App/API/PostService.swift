@@ -96,4 +96,16 @@ struct PostService {
             COLLECTION_USERS.document(uid).collection("liked-posts").document(post.postId).delete(completion: completion)
         }
     }
+    
+    static func checkUserLikedOrNot(post: PostModel, completion: @escaping(Bool) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        COLLECTION_USERS.document(uid).collection("liked-posts").document(post.postId).getDocument() { snapshot, error in
+            guard let likeStatus = snapshot?.exists else {return}
+            
+            completion(likeStatus)
+        }
+    }
+    
+    
 }

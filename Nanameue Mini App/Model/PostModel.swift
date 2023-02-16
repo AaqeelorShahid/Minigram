@@ -11,13 +11,13 @@ struct PostModel {
 
     let postId: String
     let timeStamp: Timestamp
-    let likes: Int
     let profilePicture: String
     let name: String
     let postedBy: String
     let postImageUrl: String
     var postText: String
     var didLike = false
+    var likes: Int
     
     init(postId:String, dic: [String: Any]) {
         self.postId = postId 

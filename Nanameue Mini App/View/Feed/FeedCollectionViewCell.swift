@@ -74,8 +74,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     private lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "like_unselected"), for: .normal)
-        button.tintColor = .systemGray2
         button.addTarget(self, action: #selector(likeBtnPressed), for: .touchUpInside)
         return button
     }()
@@ -167,6 +165,12 @@ class FeedCollectionViewCell: UICollectionViewCell {
         
         postText.text = viewModel.postText
         postImage.sd_setImage(with: URL(string: viewModel.imageUrl), placeholderImage: UIImage(named: "post_image_placeholder"))
+        
+        if (viewModel.post.didLike){
+            likeButton.setImage(UIImage(named: "like_selected"), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
+        }
         
     }
     
