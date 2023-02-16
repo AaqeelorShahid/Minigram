@@ -9,15 +9,16 @@ import Foundation
 import FirebaseStorage
 
 struct ImageUploader {
-     static func uploadImageToStorage(image: UIImage, completion: @escaping (String) -> Void){
+    static func uploadImageToStorage(image: UIImage, path: String, completion: @escaping (String) -> Void){
          guard let image = image.jpegData(compressionQuality: 0.50) else {return}
          
          let fileName = NSUUID().uuidString
-         let ref = Storage.storage().reference(withPath: "/profile/\(fileName)")
+            // Example for the path - "/profile"
+         let ref = Storage.storage().reference(withPath: "\(path)/\(fileName)")
          
-         ref.putData(image, metadata: nil) { meta, err in
-             if let error = err {
-                 print("Failed to upload image \(err?.localizedDescription)")
+         ref.putData(image, metadata: nil) { meta, error in
+             if let error = error {
+                 print("Failed to upload image \(error.localizedDescription)")
                  return
              }
              

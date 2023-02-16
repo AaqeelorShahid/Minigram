@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 import FirebaseAuth
 
-private let cellIdentifier = "cell"
+private let imageOnlyCellIdentifier = "image_post_cell"
+private let textOnlyCellIdentifier = "text_post_cell"
+private let postCellIdentifier = "post_cell"
 private let headerIdentifier = "cell"
 
 class ProfileController: UICollectionViewController {
@@ -43,7 +45,11 @@ class ProfileController: UICollectionViewController {
     
     func initUI() {
         collectionView.backgroundColor = .white
-        collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        
+        collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: postCellIdentifier)
+        collectionView.register(TextOnlyPostCell.self, forCellWithReuseIdentifier: textOnlyCellIdentifier)
+        collectionView.register(ImageOnlyPostCell.self, forCellWithReuseIdentifier: imageOnlyCellIdentifier)
+        
         collectionView.register(ProfileHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: headerIdentifier)
@@ -65,10 +71,23 @@ class ProfileController: UICollectionViewController {
 
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FeedCollectionViewCell
-        cell.postViewModel = PostViewModel(post: posts[indexPath.row])
-        cell.enableMenu = true
-        return cell
+        let currentPost = posts[indexPath.row]
+        if (currentPost.postText.isEmpty) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageOnlyCellIdentifier, for: indexPath) as! ImageOnlyPostCell
+            cell.postViewModel = PostViewModel(post: posts[indexPath.row])
+            cell.enableMenu = true
+            return cell
+        } else if (currentPost.postImageUrl.isEmpty) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textOnlyCellIdentifier, for: indexPath) as! TextOnlyPostCell
+            cell.postViewModel = PostViewModel(post: posts[indexPath.row])
+            cell.enableMenu = true
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: postCellIdentifier, for: indexPath) as! FeedCollectionViewCell
+            cell.postViewModel = PostViewModel(post: posts[indexPath.row])
+            cell.enableMenu = true
+            return cell
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

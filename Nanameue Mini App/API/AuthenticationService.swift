@@ -25,7 +25,7 @@ struct AuthenticationService {
     
     
     static func signupUser(withData data: AuthData, completion: @escaping(Error?) -> Void ) {
-        ImageUploader.uploadImageToStorage(image: data.profile) { url in
+        ImageUploader.uploadImageToStorage(image: data.profile, path: "/profile") { url in
             Auth.auth().createUser(withEmail: data.email, password: data.password){
                 (result, error) in
                 

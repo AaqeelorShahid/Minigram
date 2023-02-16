@@ -37,6 +37,8 @@
 		90A5B7E4299D6A6900FB4F99 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E3299D6A6900FB4F99 /* PostService.swift */; };
 		90A5B7E6299D87EF00FB4F99 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E5299D87EF00FB4F99 /* PostModel.swift */; };
 		90A5B7E8299D8B9200FB4F99 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */; };
+		90A5B7EB299E6CCB00FB4F99 /* TextOnlyPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7EA299E6CCB00FB4F99 /* TextOnlyPostCell.swift */; };
+		90A5B7ED299E6D4E00FB4F99 /* ImageOnlyPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7EC299E6D4E00FB4F99 /* ImageOnlyPostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		90A5B7E3299D6A6900FB4F99 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		90A5B7E5299D87EF00FB4F99 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		90A5B7EA299E6CCB00FB4F99 /* TextOnlyPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyPostCell.swift; sourceTree = "<group>"; };
+		90A5B7EC299E6D4E00FB4F99 /* ImageOnlyPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOnlyPostCell.swift; sourceTree = "<group>"; };
 		E3CD077D9D1093A07DD49C9C /* Pods-Nanameue Mini App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nanameue Mini App.debug.xcconfig"; path = "Target Support Files/Pods-Nanameue Mini App/Pods-Nanameue Mini App.debug.xcconfig"; sourceTree = "<group>"; };
 		E4AA052CF754F083EEBEFB3B /* Pods-Nanameue Mini App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nanameue Mini App.release.xcconfig"; path = "Target Support Files/Pods-Nanameue Mini App/Pods-Nanameue Mini App.release.xcconfig"; sourceTree = "<group>"; };
 		EE8531CDEF0BF9B3D39D6C64 /* Pods_Nanameue_Mini_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nanameue_Mini_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,8 +103,8 @@
 		904DB4F02997AA1600704C08 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90A5B7E9299E6CA000FB4F99 /* Feed */,
 				904DB537299A8F8600704C08 /* Profile */,
-				904DB5242998395200704C08 /* FeedCollectionViewCell.swift */,
 				904DB52D2998FF7B00704C08 /* CustomTextField.swift */,
 				903555F9299C310D008E34D5 /* MultiLineInputTextView.swift */,
 			);
@@ -221,6 +225,16 @@
 				9073F23F29969CE6003143B2 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		90A5B7E9299E6CA000FB4F99 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				904DB5242998395200704C08 /* FeedCollectionViewCell.swift */,
+				90A5B7EA299E6CCB00FB4F99 /* TextOnlyPostCell.swift */,
+				90A5B7EC299E6D4E00FB4F99 /* ImageOnlyPostCell.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		C9F4B5FA43820FB14C6025BA /* Pods */ = {
@@ -362,9 +376,11 @@
 				904DB51F2997AF9200704C08 /* NotificationController.swift in Sources */,
 				904DB4F72997AA8C00704C08 /* MainTabController.swift in Sources */,
 				904DB53D299A8FB400704C08 /* ProfileHeader.swift in Sources */,
+				90A5B7EB299E6CCB00FB4F99 /* TextOnlyPostCell.swift in Sources */,
 				904DB5362999796B00704C08 /* AuthenticationService.swift in Sources */,
 				904DB5232997AFB100704C08 /* ProfileController.swift in Sources */,
 				904DB52729983A9E00704C08 /* Extensions.swift in Sources */,
+				90A5B7ED299E6D4E00FB4F99 /* ImageOnlyPostCell.swift in Sources */,
 				903555EC299BEA27008E34D5 /* ProfileService.swift in Sources */,
 				904DB52A2998E97700704C08 /* RegistrationController.swift in Sources */,
 				904DB5252998395200704C08 /* FeedCollectionViewCell.swift in Sources */,

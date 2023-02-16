@@ -12,7 +12,7 @@ import FirebaseAuth
 struct PostService {
     
     static func uploadPostWithImage(postText: String, user: UserModel, postImage: UIImage, completion: @escaping (FirestoreCompletion)) {
-        ImageUploader.uploadImageToStorage(image: postImage) { imageUrl in
+        ImageUploader.uploadImageToStorage(image: postImage, path: "/posts") { imageUrl in
             
             let data = ["timeStamp" : Timestamp(date: Date()),
                         "postText" : postText,
