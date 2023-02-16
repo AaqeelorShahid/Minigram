@@ -41,7 +41,6 @@ class TextOnlyPostCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(usernamePressed), for: .touchUpInside)
         return button
     }()
     
@@ -154,10 +153,6 @@ class TextOnlyPostCell: UICollectionViewCell {
     
     
     //MARK: - Actions
-    
-    @objc func usernamePressed() {
-        print ("user name [ressed")
-    }
     
     @objc func likeBtnPressed() {
         guard let postModel = postViewModel else {return}

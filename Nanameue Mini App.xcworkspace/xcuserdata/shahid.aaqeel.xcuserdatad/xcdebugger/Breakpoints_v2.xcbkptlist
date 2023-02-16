@@ -17,5 +17,69 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A435675-DF5A-4210-A7FD-9F3E0FC5826F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nanameue Mini App/Controller/MainFeedController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "handleLikeAction(post:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9A435675-DF5A-4210-A7FD-9F3E0FC5826F - 15bf3fda450a6ba3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Nanameue_Mini_App.MainFeedController.handleLikeAction(post: Nanameue_Mini_App.PostModel) -&gt; ()"
+                  moduleName = "Nanameue Mini App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shahid.aaqeel/Dev/ios/Nanameue%20Mini%20App/Nanameue%20Mini%20App/Controller/MainFeedController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "9A435675-DF5A-4210-A7FD-9F3E0FC5826F - 15bf3fda450a6ba3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Nanameue_Mini_App.MainFeedController.handleLikeAction(post: Nanameue_Mini_App.PostModel) -&gt; ()"
+                  moduleName = "Nanameue Mini App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shahid.aaqeel/Dev/ios/Nanameue%20Mini%20App/Nanameue%20Mini%20App/Controller/MainFeedController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8029087D-340E-4807-9A99-D2338FE4F621"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nanameue Mini App/Controller/MainFeedController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "handleLikeAction(post:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

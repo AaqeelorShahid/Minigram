@@ -41,7 +41,6 @@ class ImageOnlyPostCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(usernamePressed), for: .touchUpInside)
         return button
     }()
     
@@ -161,11 +160,7 @@ class ImageOnlyPostCell: UICollectionViewCell {
     
     
     //MARK: - Actions
-    
-    @objc func usernamePressed() {
-        print ("user name [ressed")
-    }
-    
+
     @objc func likeBtnPressed() {
         guard let postModel = postViewModel else {return}
         delegate?.cell(self, likedThisPost: postModel.post, from: FROM_IMAGE_ONLY_POST_CELL)

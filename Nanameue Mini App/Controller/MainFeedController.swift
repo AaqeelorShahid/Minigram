@@ -71,6 +71,28 @@ class MainFeedController: UICollectionViewController {
     @objc func refreshFeed() {
         fetchPosts()
     }
+    
+    func handleLikeAction (post: PostModel) {
+        if post.didLike {
+            PostService.unlikePost(post: post) { error in
+                if let error = error {
+                    print("Error in unlike post api \(error)")
+                }
+            }
+            
+            //Set unlike animation to the button here
+
+            
+        } else {
+            PostService.likePost(post: post) { error in
+                if let error = error {
+                    print("Error in like post api \(error)")
+                }
+            }
+            
+            //Set liked animation to the button here
+        }
+    }
 }
 
 // MARK: - UICollectionView Data Source
@@ -147,31 +169,19 @@ extension MainFeedController: CommonFeedCellDelegate {
             
             let currentCell = cell as! FeedCollectionViewCell
             currentCell.postViewModel?.post.didLike.toggle()
-            if post.didLike {
-                print("post unliked \(post.didLike)")
-            } else {
-                print("post liked \(post.didLike)")
-            }
+            handleLikeAction(post: post)
             
         } else if (from == FROM_TEXT_ONLY_POST_CELL){
             
             let currentCell = cell as! TextOnlyPostCell
             currentCell.postViewModel?.post.didLike.toggle()
-            if post.didLike {
-                print("post unliked \(post.didLike)")
-            } else {
-                print("post liked \(post.didLike)")
-            }
+            handleLikeAction(post: post)
             
         } else if (from == FROM_IMAGE_ONLY_POST_CELL){
             
             let currentCell = cell as! ImageOnlyPostCell
             currentCell.postViewModel?.post.didLike.toggle()
-            if post.didLike {
-                print("post unliked \(post.didLike)")
-            } else {
-                print("post liked \(post.didLike)")
-            }
+            handleLikeAction(post: post)
             
         }
     }

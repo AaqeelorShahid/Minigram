@@ -18,14 +18,12 @@ class ProfileHeader: UICollectionReusableView {
     
     let profilePicture: UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "profile"), for: .normal)
         button.imageView?.contentMode = .scaleToFill
         return button
     }()
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Shahid Aaqeel"
         label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 1
@@ -34,7 +32,6 @@ class ProfileHeader: UICollectionReusableView {
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@shahid.aaqeel"
         label.font = UIFont.systemFont(ofSize: 15, weight: .light)
         label.textColor = .systemGray2
         label.textAlignment = .center
