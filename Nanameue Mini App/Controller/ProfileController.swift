@@ -22,7 +22,9 @@ class ProfileController: UICollectionViewController {
         didSet{ collectionView.reloadData() }
     }
     
-    var posts = [PostModel]()
+    var posts = [PostModel]() {
+        didSet { collectionView.reloadData() }
+    }
     
     //MARK: - Lifecycle
     
@@ -60,8 +62,40 @@ class ProfileController: UICollectionViewController {
         showLoading(true)
         PostService.fetchPosts(forUser: userId) { posts in
             self.posts = posts
+            self.checkUsedLikedOrNot()
             self.showLoading(false)
-            self.collectionView.reloadData()
+        }
+    }
+    
+    func checkUsedLikedOrNot() {
+        self.posts.forEach { item in
+            PostService.checkUserLikedOrNot(post: item) { likeStatus in
+                if let currentIndex = self.posts.firstIndex(where: {$0.postId == item.postId}){
+                    self.posts[currentIndex].didLike = likeStatus
+                }
+            }
+        }
+    }
+    
+    func handleLikeAction (post: PostModel) {
+        if post.didLike {
+            PostService.unlikePost(post: post) { error in
+                if let error = error {
+                    print("Error in unlike post api \(error)")
+                }
+                
+                
+            }
+            //Set unlike animation to the button here
+
+        } else {
+            PostService.likePost(post: post) { error in
+                if let error = error {
+                    print("Error in like post api \(error)")
+                }
+            }
+            
+            //Set liked animation to the button here
         }
     }
 }
@@ -147,32 +181,32 @@ extension ProfileController: CommonFeedCellDelegate {
             
             let currentCell = cell as! FeedCollectionViewCell
             currentCell.postViewModel?.post.didLike.toggle()
-            if post.didLike {
-                print("post unliked \(post.didLike)")
-            } else {
-                print("post liked \(post.didLike)")
-            }
+            
+            guard let like = currentCell.postViewModel?.likeCount else {return}
+            currentCell.postViewModel?.post.likes = post.didLike ? like - 1 : like + 1
+            
+            handleLikeAction(post: post)
+            
             
         } else if (from == FROM_TEXT_ONLY_POST_CELL){
             
             let currentCell = cell as! TextOnlyPostCell
             currentCell.postViewModel?.post.didLike.toggle()
-            if post.didLike {
-                print("post unliked \(post.didLike)")
-            } else {
-                print("post liked \(post.didLike)")
-            }
+            
+            guard let like = currentCell.postViewModel?.likeCount else {return}
+            currentCell.postViewModel?.post.likes = post.didLike ? like - 1 : like + 1
+
+            handleLikeAction(post: post)
             
         } else if (from == FROM_IMAGE_ONLY_POST_CELL){
             
             let currentCell = cell as! ImageOnlyPostCell
             currentCell.postViewModel?.post.didLike.toggle()
-            if post.didLike {
-                print("post unliked \(post.didLike)")
-            } else {
-                print("post liked \(post.didLike)")
-            }
             
+            guard let like = currentCell.postViewModel?.likeCount else {return}
+            currentCell.postViewModel?.post.likes = post.didLike ? like - 1 : like + 1
+
+            handleLikeAction(post: post)
         }
     }
     
