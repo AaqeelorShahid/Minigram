@@ -21,6 +21,7 @@ class CustomTextField: UITextField {
         borderStyle = .none
         keyboardAppearance = .dark
         textColor = .black
+        autocapitalizationType = .none
         
         layer.cornerRadius = 12
         layer.borderColor = UIColor.systemGray4.cgColor

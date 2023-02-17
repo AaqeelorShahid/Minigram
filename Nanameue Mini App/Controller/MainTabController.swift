@@ -63,16 +63,12 @@ class MainTabController: UITabBarController {
         let collectionViewLayout = UICollectionViewFlowLayout()
         let feed = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "feed_unselected"), selectedImage: UIImage(imageLiteralResourceName: "feed_selected"), viewController: MainFeedController(collectionViewLayout: collectionViewLayout))
         
-        let search = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "search_unselected"), selectedImage: UIImage(imageLiteralResourceName: "search_selected"), viewController: SearchController())
-        
         let postMaker = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "post_maker_unselected"), selectedImage: UIImage(imageLiteralResourceName: "post_maker_selected"), viewController: PostMakerController())
-        
-        let notification = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "notification_unselected"), selectedImage: UIImage(imageLiteralResourceName: "notification_selected"), viewController: NotificationController())
         
         let profileController = ProfileController(model: model)
         let profile = initNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "profile_unselected"), selectedImage: UIImage(imageLiteralResourceName: "profile_selected"), viewController: profileController)
         
-        viewControllers = [feed, search, postMaker, notification, profile]
+        viewControllers = [feed, postMaker, profile]
         tabBar.tintColor = .black
         tabBar.isTranslucent = false
     }
@@ -102,8 +98,7 @@ extension MainTabController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let selectedTabIndex = viewControllers?.firstIndex(of: viewController)
         
-        //TODO: - if removed the search and notification tab, please change the index of post maker below
-        if selectedTabIndex == 2 {
+        if selectedTabIndex == 1 {
             let controller = PostUploadController()
             controller.delegate = self
             controller.userModel = model
