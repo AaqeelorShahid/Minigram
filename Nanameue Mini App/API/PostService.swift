@@ -101,11 +101,14 @@ struct PostService {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         
         COLLECTION_USERS.document(uid).collection("liked-posts").document(post.postId).getDocument() { snapshot, error in
+            
+            if let error = error {
+                print ("error in like check \(error)")
+            }
             guard let likeStatus = snapshot?.exists else {return}
             
             completion(likeStatus)
         }
     }
-    
     
 }

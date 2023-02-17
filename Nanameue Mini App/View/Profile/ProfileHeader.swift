@@ -9,8 +9,14 @@ import Foundation
 import UIKit
 import SDWebImage
 
+protocol ProfileHeaderProtocol: AnyObject {
+    func cell(_ selectedBtn: Int)
+}
+
 class ProfileHeader: UICollectionReusableView {
     // MARK: - Properties
+    
+    weak var delegate: ProfileHeaderProtocol?
     
     var viewModel: UserModel? {
         didSet{initHeaderUI()}
@@ -39,34 +45,10 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
-    lazy var postCountLabel: UILabel = {
-        let label = UILabel()
-        label.attributedText = attributedText(value: 12, label: "posts")
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
-    
-    lazy var followerCountLabel: UILabel = {
-        let label = UILabel()
-        label.attributedText = attributedText(value: 25, label: "followers")
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
-    
-    lazy var followingCountLabel: UILabel = {
-        let label = UILabel()
-        label.attributedText = attributedText(value: 12, label: "following")
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
-    
     private lazy var editProfileBtn: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "main_color")
-        button.setTitle("Edit Profile", for: .normal)
+        button.setTitle("Change Profile", for: .normal)
         button.tintColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.layer.cornerRadius = 15
@@ -85,7 +67,7 @@ class ProfileHeader: UICollectionReusableView {
         button.imageView?.contentMode = .scaleToFill
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
         button.isUserInteractionEnabled = true
-        button.addTarget(self, action: #selector(postSectionBtnPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(likeSectionBtnPressed), for: .touchUpInside)
         return button
     }()
     
@@ -93,12 +75,12 @@ class ProfileHeader: UICollectionReusableView {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "square.on.square.intersection.dashed"), for: .normal)
         button.setTitle("Posts", for: .normal)
-        button.tintColor = UIColor.black
+        button.tintColor = UIColor(named: "main_color")
         button.setTitleColor(.black, for: .normal)
         button.imageView?.contentMode = .scaleToFill
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
         button.isUserInteractionEnabled = true
-        button.addTarget(self, action: #selector(likeSectionBtnPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(postSectionBtnPressed), for: .touchUpInside)
         return button
     }()
     
@@ -138,19 +120,10 @@ class ProfileHeader: UICollectionReusableView {
         usernameLabel.centerX(inView: nameLabel)
         usernameLabel.anchor(top: nameLabel.bottomAnchor, paddingTop: 8)
         
-        let stack = UIStackView(arrangedSubviews: [postCountLabel, followerCountLabel, followingCountLabel])
-        stack.axis = .horizontal
-        stack.spacing = 12
-        stack.distribution = .fillEqually
-        
-        addSubview(stack)
-        stack.centerX(inView: usernameLabel)
-        stack.anchor(top: usernameLabel.bottomAnchor, paddingTop: 8)
-        
         addSubview(editProfileBtn)
-        editProfileBtn.centerX(inView: stack)
+        editProfileBtn.centerX(inView: usernameLabel)
         editProfileBtn.setDimensions(height: 40, width: 180)
-        editProfileBtn.anchor(top: stack.bottomAnchor, paddingTop: 12)
+        editProfileBtn.anchor(top: usernameLabel.bottomAnchor, paddingTop: 12)
         
         addSubview(separatorView)
         separatorView.anchor(top: editProfileBtn.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, height: 1)
@@ -187,17 +160,28 @@ class ProfileHeader: UICollectionReusableView {
         profilePicture.sd_setImage(with: URL(string: viewModel.profileUrl), for: .normal)
     }
     
-//    MARK: - Actions
+    func handleSelectedBtnColor(selected: Int){
+        if (selected == 0){
+            postSectionButton.tintColor = UIColor(named: "main_color")
+            likeSectionButton.tintColor = UIColor(named: "sub_color")
+        } else {
+            postSectionButton.tintColor = UIColor(named: "sub_color")
+            likeSectionButton.tintColor = UIColor(named: "main_color")
+        }
+    }
     
+//    MARK: - Actions
     @objc func editProfileBtnPressed() {
-     print("asdasd")
+     
     }
     
     @objc func postSectionBtnPressed() {
-        print("asdasd")
+        handleSelectedBtnColor(selected: OWN_POST_BUTTON)
+        delegate?.cell(OWN_POST_BUTTON)
     }
     
     @objc func likeSectionBtnPressed() {
-        print("asdasd")
+        handleSelectedBtnColor(selected: LIKED_POST_BUTTON)
+        delegate?.cell(OWN_POST_BUTTON)
     }
 }

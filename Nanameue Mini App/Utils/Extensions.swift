@@ -19,6 +19,18 @@ extension UIViewController {
         
         if show {
             UIViewController.hud.show(in: view, animated: true)
+            UIViewController.hud.textLabel.text = ""
+        } else {
+            UIViewController.hud.dismiss(animated: true)
+        }
+    }
+    
+    func showLoadingWithText(_ show: Bool, description: String){
+        view.endEditing(true)
+        
+        if show {
+            UIViewController.hud.show(in: view, animated: true)
+            UIViewController.hud.textLabel.text = description
         } else {
             UIViewController.hud.dismiss(animated: true)
         }

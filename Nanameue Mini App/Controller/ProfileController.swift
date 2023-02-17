@@ -17,14 +17,17 @@ private let headerIdentifier = "header_cell"
 class ProfileController: UICollectionViewController {
     
     //MARK: - Properties
-    
+
     var model: UserModel {
         didSet{ collectionView.reloadData() }
     }
     
     var posts = [PostModel]() {
-        didSet { collectionView.reloadData() }
+        didSet{ collectionView.reloadData() }
     }
+    
+    var likedPosts = [PostModel]()
+    var index: Int = 0
     
     //MARK: - Lifecycle
     
@@ -77,16 +80,37 @@ class ProfileController: UICollectionViewController {
         }
     }
     
+    func fetchAllPosts() {
+        showLoadingWithText(true, description: "This might take several seconds")
+        PostService.fetchPosts() { posts in
+            self.posts = posts
+            self.fetchAllLikedPosts()
+        }
+    }
+    
+    func fetchAllLikedPosts() {
+        if index < self.posts.count {
+            PostService.checkUserLikedOrNot(post: self.posts[index]) { likeStatus in
+                if likeStatus {
+                    self.posts[self.index].didLike = true
+                    self.likedPosts.append(self.posts[self.index])
+                }
+                self.index += 1
+                self.fetchAllLikedPosts()
+            }
+        } else {
+            self.posts = likedPosts
+            showLoading(false)
+        }
+    }
+    
     func handleLikeAction (post: PostModel) {
         if post.didLike {
             PostService.unlikePost(post: post) { error in
                 if let error = error {
                     print("Error in unlike post api \(error)")
                 }
-                
-                
             }
-            //Set unlike animation to the button here
 
         } else {
             PostService.likePost(post: post) { error in
@@ -94,8 +118,6 @@ class ProfileController: UICollectionViewController {
                     print("Error in like post api \(error)")
                 }
             }
-            
-            //Set liked animation to the button here
         }
     }
 }
@@ -135,7 +157,7 @@ extension ProfileController {
             ofKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: headerIdentifier,
             for: indexPath) as! ProfileHeader
-        
+        header.delegate = self
         header.viewModel = model
         return header
     }
@@ -169,7 +191,7 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 325)
+        return CGSize(width: view.frame.width, height: 290)
     }
 }
 
@@ -231,5 +253,15 @@ extension ProfileController: CommonFeedCellDelegate {
         alert.addAction(deleteAction)
         
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension ProfileController: ProfileHeaderProtocol {
+    func cell(_ selectedBtn: Int) {
+        if selectedBtn == OWN_POST_BUTTON {
+            fetchAllPosts()
+        } else {
+            fetchPosts()
+        }
     }
 }
