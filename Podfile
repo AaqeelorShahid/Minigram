@@ -13,5 +13,6 @@ target 'Nanameue Mini App' do
   pod 'SDWebImage'
   pod 'YPImagePicker'
   pod 'JGProgressHUD'
+  pod 'IQKeyboardManagerSwift'
 
 end

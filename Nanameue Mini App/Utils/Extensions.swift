@@ -65,6 +65,7 @@ extension UILabel {
     func defaultTitleStyle(titleString: String){
         text = titleString
         font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        textColor = .black
         textAlignment = .center
         numberOfLines = -1
     }

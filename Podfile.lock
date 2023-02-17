@@ -750,6 +750,7 @@ PODS:
     - Libuv-gRPC (= 0.0.10)
   - gRPC-Core/Interface (1.44.0)
   - GTMSessionFetcher/Core (3.1.0)
+  - IQKeyboardManagerSwift (6.5.11)
   - JGProgressHUD (2.2)
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
@@ -778,6 +779,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseFirestore
   - FirebaseStorage
+  - IQKeyboardManagerSwift
   - JGProgressHUD
   - SDWebImage
   - YPImagePicker
@@ -801,6 +803,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - IQKeyboardManagerSwift
     - JGProgressHUD
     - leveldb-library
     - Libuv-gRPC
@@ -829,6 +832,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
@@ -839,6 +843,6 @@ SPEC CHECKSUMS:
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: d6ad83cecf510c8ce946d5f1c5f6a0a9ddb85ec3
+PODFILE CHECKSUM: 9fb4960d46f080ee3f61f10559a3f2c5106f1606
 
 COCOAPODS: 1.11.3
