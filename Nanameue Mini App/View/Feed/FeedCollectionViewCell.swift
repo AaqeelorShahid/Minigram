@@ -60,6 +60,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = -1
+        label.textColor = .black
         return label
     }()
     

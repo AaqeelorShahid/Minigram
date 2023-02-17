@@ -33,6 +33,7 @@ class ProfileHeader: UICollectionReusableView {
         label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 1
+        label.textColor = .black
         return label
     }()
     
