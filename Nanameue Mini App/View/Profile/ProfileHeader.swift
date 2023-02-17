@@ -183,6 +183,6 @@ class ProfileHeader: UICollectionReusableView {
     
     @objc func likeSectionBtnPressed() {
         handleSelectedBtnColor(selected: LIKED_POST_BUTTON)
-        delegate?.cell(OWN_POST_BUTTON)
+        delegate?.cell(LIKED_POST_BUTTON)
     }
 }

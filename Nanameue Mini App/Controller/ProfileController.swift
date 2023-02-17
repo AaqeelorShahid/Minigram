@@ -26,6 +26,8 @@ class ProfileController: UICollectionViewController {
         didSet{ collectionView.reloadData() }
     }
     
+    var enableMenuSatus: Bool = true
+    
     var likedPosts = [PostModel]()
     var index: Int = 0
     
@@ -130,19 +132,19 @@ extension ProfileController {
         if (currentPost.postText.isEmpty) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageOnlyCellIdentifier, for: indexPath) as! ImageOnlyPostCell
             cell.postViewModel = PostViewModel(post: posts[indexPath.row])
-            cell.enableMenu = true
+            cell.enableMenu = enableMenuSatus
             cell.delegate = self
             return cell
         } else if (currentPost.postImageUrl.isEmpty) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textOnlyCellIdentifier, for: indexPath) as! TextOnlyPostCell
             cell.postViewModel = PostViewModel(post: posts[indexPath.row])
-            cell.enableMenu = true
+            cell.enableMenu = enableMenuSatus
             cell.delegate = self
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: postCellIdentifier, for: indexPath) as! FeedCollectionViewCell
             cell.postViewModel = PostViewModel(post: posts[indexPath.row])
-            cell.enableMenu = true
+            cell.enableMenu = enableMenuSatus
             cell.delegate = self
             return cell
         }
@@ -259,9 +261,11 @@ extension ProfileController: CommonFeedCellDelegate {
 extension ProfileController: ProfileHeaderProtocol {
     func cell(_ selectedBtn: Int) {
         if selectedBtn == OWN_POST_BUTTON {
-            fetchAllPosts()
-        } else {
             fetchPosts()
+            enableMenuSatus = true
+        } else {
+            fetchAllPosts()
+            enableMenuSatus = false
         }
     }
 }
