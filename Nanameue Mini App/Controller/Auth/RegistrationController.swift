@@ -115,8 +115,22 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
     @objc func textChange(sender: UITextField){
         if sender == emailTextField {
             viewModel.email = sender.text
+            
+            if (!emailTextField.text!.contains("@")){
+                emailTextField.showError()
+            } else {
+                emailTextField.removeError()
+            }
+            
         } else if sender == passwordTextField {
             viewModel.password = sender.text
+            
+            if (passwordTextField.text!.count < 6){
+                passwordTextField.showError()
+            } else {
+                passwordTextField.removeError()
+            }
+            
         } else if sender == nameField {
             viewModel.name = sender.text
         } else {

@@ -71,6 +71,22 @@ extension UILabel {
     }
 }
 
+extension UITextField {
+    func showError() {
+        borderStyle = .none
+        layer.cornerRadius = 12
+        layer.borderColor = UIColor.red.cgColor
+        layer.borderWidth = 1
+    }
+    
+    func removeError() {
+        borderStyle = .none
+        layer.cornerRadius = 12
+        layer.borderColor = UIColor.systemGray4.cgColor
+        layer.borderWidth = 1
+    }
+}
+
 //This extension is used to calculate the height of given String based on font and font size
 extension String {
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {

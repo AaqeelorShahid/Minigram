@@ -36,7 +36,7 @@ struct RegistationViewModel: AuthenticationViewModel {
     var isValid: Bool {
         return
         password?.isEmpty == false &&
-        (password!.count <= 6) == false &&
+        (password!.count < 6) == false &&
         email?.isEmpty == false &&
         email?.contains("@") != false &&
         name?.isEmpty == false &&
