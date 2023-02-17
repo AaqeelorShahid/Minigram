@@ -34,8 +34,13 @@ struct RegistationViewModel: AuthenticationViewModel {
     var username: String?
     
     var isValid: Bool {
-        return password?.isEmpty == false && email?.isEmpty == false
-        && name?.isEmpty == false && username?.isEmpty == false
+        return
+        password?.isEmpty == false &&
+        (password!.count <= 6) == false &&
+        email?.isEmpty == false &&
+        email?.contains("@") != false &&
+        name?.isEmpty == false &&
+        username?.isEmpty == false
     }
     
     var btnBackgound: UIColor {
