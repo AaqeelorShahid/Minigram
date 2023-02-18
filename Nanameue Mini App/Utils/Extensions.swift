@@ -14,29 +14,25 @@ import JGProgressHUD
 extension UIViewController {
     static let hud = JGProgressHUD(style: .dark)
     
-    func showLoading(_ show: Bool){
+    func showLoading(_ show: Bool, showText: Bool, description: String? = nil){
         view.endEditing(true)
+        UIViewController.hud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
+        UIViewController.hud.indicatorView?.tintColor = UIColor.white
         
         if show {
             UIViewController.hud.show(in: view, animated: true)
-            UIViewController.hud.textLabel.text = ""
-        } else {
-            UIViewController.hud.dismiss(animated: true)
-        }
-    }
-    
-    func showLoadingWithText(_ show: Bool, description: String){
-        view.endEditing(true)
-        
-        if show {
-            UIViewController.hud.show(in: view, animated: true)
-            UIViewController.hud.textLabel.text = description
+            if showText {
+                UIViewController.hud.textLabel.text = description
+            } else {
+                UIViewController.hud.textLabel.text = ""
+            }
         } else {
             UIViewController.hud.dismiss(animated: true)
         }
     }
     
     func showErrorMessage(showErorText: Bool, error: String? = nil){
+        view.endEditing(true)
         UIViewController.hud.indicatorView = JGProgressHUDErrorIndicatorView()
         UIViewController.hud.indicatorView?.tintColor = UIColor(named: "red_50_color")
         
@@ -45,7 +41,7 @@ extension UIViewController {
             UIViewController.hud.textLabel.text = error
         }
         
-        UIViewController.hud.dismiss(afterDelay: 4.0)
+        UIViewController.hud.dismiss(afterDelay: 2.0)
     }
 }
 

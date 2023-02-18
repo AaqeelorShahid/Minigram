@@ -46,11 +46,11 @@ class MainFeedController: UICollectionViewController {
     }
     
     func fetchPosts() {
-        showLoading(true)
+        showLoading(true, showText: false)
         PostService.fetchPosts { posts in
             self.posts = posts
             self.checkUsedLikedOrNot()
-            self.showLoading(false)
+            self.showLoading(false, showText: false)
             self.collectionView.refreshControl?.endRefreshing()
         }
     }

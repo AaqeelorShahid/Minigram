@@ -133,7 +133,7 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         
-        showLoading(true)
+        showLoading(true, showText: false)
         
         AuthenticationService.loginUser(withEmail: email, password: password) { result, err in
             

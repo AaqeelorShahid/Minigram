@@ -216,7 +216,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         guard let postText = postTextField.text else {return}
         guard let user = userModel else {return}
         
-        showLoading(true)
+        showLoading(true, showText: false)
         
         if (postImage != nil){
             guard let postImage = postImage else {return}

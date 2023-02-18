@@ -87,7 +87,7 @@ class MainTabController: UITabBarController {
 extension MainTabController: AuthenticationDelegate {
     func authenticationCompleted() {
         fetchUserData()
-        showLoading(false)
+        showLoading(false, showText: false)
         self.dismiss(animated: true)
     }
 }
@@ -116,7 +116,7 @@ extension MainTabController: PostUploadProtocol {
     func controllerDidFinishTask(_ controller: PostUploadController) {
         selectedIndex = 0
         controller.dismiss(animated: true)
-        showLoading(false)
+        showLoading(false, showText: false)
         
         //Refreshing the feed/timeline after posting new post
         guard let navigationController = viewControllers?.first as? UINavigationController else {return}

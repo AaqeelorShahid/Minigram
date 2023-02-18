@@ -64,11 +64,11 @@ class ProfileController: UICollectionViewController {
     func fetchPosts() {
         let uid = Auth.auth().currentUser?.uid
         guard let userId = uid else {return}
-        showLoading(true)
+        showLoading(true, showText: false)
         PostService.fetchPosts(forUser: userId) { posts in
             self.posts = posts
             self.checkUsedLikedOrNot()
-            self.showLoading(false)
+            self.showLoading(false, showText: false)
         }
     }
     
@@ -83,7 +83,7 @@ class ProfileController: UICollectionViewController {
     }
     
     func fetchAllPosts() {
-        showLoadingWithText(true, description: "This might take several seconds")
+        showLoading(true, showText: true, description: "This might take several seconds")
         PostService.fetchPosts() { posts in
             self.posts = posts
             self.fetchAllLikedPosts()
@@ -102,7 +102,7 @@ class ProfileController: UICollectionViewController {
             }
         } else {
             self.posts = likedPosts
-            showLoading(false)
+            showLoading(false, showText: false)
         }
     }
     
@@ -242,7 +242,7 @@ extension ProfileController: CommonFeedCellDelegate {
             self.dismiss(animated: true)
         }
         let deleteAction = UIAlertAction(title: "Delete Post", style: .destructive) { (action) in
-            self.showLoading(true)
+            self.showLoading(true, showText: false)
             PostService.removePost(withId: post.postId) { error in
                 if let error = error {
                     print ("Error in removing post: \(error)")
@@ -250,7 +250,7 @@ extension ProfileController: CommonFeedCellDelegate {
                 }
             }
             
-            self.showLoading(false)
+            self.showLoading(false, showText: false)
             self.fetchPosts()
         }
         
