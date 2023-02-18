@@ -117,7 +117,7 @@ class LoginController: UIViewController {
         } else {
             viewModel.password = passwordTextField.text
             
-            if (passwordTextField.text!.count < 6){
+            if (passwordTextField.text!.count <= 8){
                 passwordTextField.showError()
             } else {
                 passwordTextField.removeError()

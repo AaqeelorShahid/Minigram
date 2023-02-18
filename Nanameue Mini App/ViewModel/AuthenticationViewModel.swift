@@ -17,6 +17,11 @@ struct LoginViewModel: AuthenticationViewModel {
     var email: String?
     var password: String?
     
+    init(email: String? = nil, password: String? = nil) {
+        self.email = email
+        self.password = password
+    }
+    
     var isValid: Bool {
         return password?.isEmpty == false &&
         isValidPassword(password: password!) == true &&
@@ -38,6 +43,13 @@ struct RegistationViewModel: AuthenticationViewModel {
     var name: String?
     var username: String?
     
+    init(email: String? = nil, password: String? = nil, name: String? = nil, username: String? = nil) {
+        self.email = email
+        self.password = password
+        self.name = name
+        self.username = username
+    }
+    
     var isValid: Bool {
         return password?.isEmpty == false &&
         isValidPassword(password: password!) == true &&
@@ -56,7 +68,7 @@ struct RegistationViewModel: AuthenticationViewModel {
 }
 
 private func isValidPassword(password: String) -> Bool {
-    let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$"
+    let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
     let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
     return passwordPredicate.evaluate(with: password)
 }
