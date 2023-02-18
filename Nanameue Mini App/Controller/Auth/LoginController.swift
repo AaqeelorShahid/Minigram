@@ -101,14 +101,28 @@ class LoginController: UIViewController {
         emailTextField.addTarget(self, action: #selector(textChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textChange), for: .editingChanged)
     }
-    
+     
     //MARK: - Actions
     
     @objc func textChange(sender: UITextField) {
         if sender == emailTextField {
             viewModel.email = emailTextField.text
+            
+            if (!emailTextField.text!.contains("@")){
+                emailTextField.showError()
+            } else {
+                emailTextField.removeError()
+            }
+            
         } else {
             viewModel.password = passwordTextField.text
+            
+            if (passwordTextField.text!.count < 6){
+                passwordTextField.showError()
+            } else {
+                passwordTextField.removeError()
+            }
+            
         }
         
         loginButton.backgroundColor = viewModel.btnBackgound

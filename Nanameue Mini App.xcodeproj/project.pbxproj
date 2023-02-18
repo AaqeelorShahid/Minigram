@@ -34,12 +34,23 @@
 		9073F24129969CE6003143B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F23F29969CE6003143B2 /* Main.storyboard */; };
 		9073F24329969CE8003143B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24229969CE8003143B2 /* Assets.xcassets */; };
 		9073F24629969CE8003143B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24429969CE8003143B2 /* LaunchScreen.storyboard */; };
+		909E008129A040D200879BA4 /* MinigramAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E008029A040D200879BA4 /* MinigramAppTests.swift */; };
 		90A5B7E4299D6A6900FB4F99 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E3299D6A6900FB4F99 /* PostService.swift */; };
 		90A5B7E6299D87EF00FB4F99 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E5299D87EF00FB4F99 /* PostModel.swift */; };
 		90A5B7E8299D8B9200FB4F99 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */; };
 		90A5B7EB299E6CCB00FB4F99 /* TextOnlyPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7EA299E6CCB00FB4F99 /* TextOnlyPostCell.swift */; };
 		90A5B7ED299E6D4E00FB4F99 /* ImageOnlyPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7EC299E6D4E00FB4F99 /* ImageOnlyPostCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		909E008229A040D200879BA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9073F22E29969CE6003143B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9073F23529969CE6003143B2;
+			remoteInfo = "Nanameue Mini App";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		903555EB299BEA27008E34D5 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
@@ -70,6 +81,8 @@
 		9073F24229969CE8003143B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9073F24529969CE8003143B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9073F24729969CE8003143B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		909E007E29A040D200879BA4 /* Nanameue Mini AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nanameue Mini AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		909E008029A040D200879BA4 /* MinigramAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinigramAppTests.swift; sourceTree = "<group>"; };
 		90A5B7E3299D6A6900FB4F99 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		90A5B7E5299D87EF00FB4F99 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
@@ -86,6 +99,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3413C546757DC648ED0C38 /* Pods_Nanameue_Mini_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		909E007B29A040D200879BA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				9073F23829969CE6003143B2 /* Nanameue Mini App */,
+				909E007F29A040D200879BA4 /* Nanameue Mini AppTests */,
 				9073F23729969CE6003143B2 /* Products */,
 				C9F4B5FA43820FB14C6025BA /* Pods */,
 				044939C53D393982C3ED1B1E /* Frameworks */,
@@ -195,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				9073F23629969CE6003143B2 /* Nanameue Mini App.app */,
+				909E007E29A040D200879BA4 /* Nanameue Mini AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +247,14 @@
 				9073F23F29969CE6003143B2 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		909E007F29A040D200879BA4 /* Nanameue Mini AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				909E008029A040D200879BA4 /* MinigramAppTests.swift */,
+			);
+			path = "Nanameue Mini AppTests";
 			sourceTree = "<group>";
 		};
 		90A5B7E9299E6CA000FB4F99 /* Feed */ = {
@@ -268,6 +298,24 @@
 			productReference = 9073F23629969CE6003143B2 /* Nanameue Mini App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		909E007D29A040D200879BA4 /* Nanameue Mini AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 909E008629A040D200879BA4 /* Build configuration list for PBXNativeTarget "Nanameue Mini AppTests" */;
+			buildPhases = (
+				909E007A29A040D200879BA4 /* Sources */,
+				909E007B29A040D200879BA4 /* Frameworks */,
+				909E007C29A040D200879BA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				909E008329A040D200879BA4 /* PBXTargetDependency */,
+			);
+			name = "Nanameue Mini AppTests";
+			productName = "Nanameue Mini AppTests";
+			productReference = 909E007E29A040D200879BA4 /* Nanameue Mini AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -280,6 +328,10 @@
 				TargetAttributes = {
 					9073F23529969CE6003143B2 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					909E007D29A040D200879BA4 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 9073F23529969CE6003143B2;
 					};
 				};
 			};
@@ -297,6 +349,7 @@
 			projectRoot = "";
 			targets = (
 				9073F23529969CE6003143B2 /* Nanameue Mini App */,
+				909E007D29A040D200879BA4 /* Nanameue Mini AppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -310,6 +363,13 @@
 				904DB532299971D600704C08 /* GoogleService-Info.plist in Resources */,
 				9073F24329969CE8003143B2 /* Assets.xcassets in Resources */,
 				9073F24129969CE6003143B2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		909E007C29A040D200879BA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +452,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		909E007A29A040D200879BA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				909E008129A040D200879BA4 /* MinigramAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		909E008329A040D200879BA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9073F23529969CE6003143B2 /* Nanameue Mini App */;
+			targetProxy = 909E008229A040D200879BA4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9073F23F29969CE6003143B2 /* Main.storyboard */ = {
@@ -592,6 +668,44 @@
 			};
 			name = Release;
 		};
+		909E008429A040D200879BA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R7795MTWN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shahid.Nanameue-Mini-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nanameue Mini App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nanameue Mini App";
+			};
+			name = Debug;
+		};
+		909E008529A040D200879BA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R7795MTWN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shahid.Nanameue-Mini-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nanameue Mini App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nanameue Mini App";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -609,6 +723,15 @@
 			buildConfigurations = (
 				9073F24B29969CE8003143B2 /* Debug */,
 				9073F24C29969CE8003143B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		909E008629A040D200879BA4 /* Build configuration list for PBXNativeTarget "Nanameue Mini AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				909E008429A040D200879BA4 /* Debug */,
+				909E008529A040D200879BA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

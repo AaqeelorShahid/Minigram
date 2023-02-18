@@ -36,10 +36,28 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         return textField
     }()
     
+    private let emailErrorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email is invalid"
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .red
+        label.isHidden = true
+        return label
+    }()
+    
     private let passwordTextField: UITextField = {
         let textField = CustomTextField(placeholderText: "Password")
         textField.isSecureTextEntry = true
         return textField
+    }()
+    
+    private let passwordErrorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email is invalid"
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .red
+        label.isHidden = true
+        return label
     }()
     
     private let nameField: UITextField = {
@@ -88,8 +106,8 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         profileImageView.centerX(inView: view)
         profileImageView.anchor(top: titleLabel.bottomAnchor, paddingTop: 20)
         
-        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, nameField, usernameField, signupBtn])
-        stackView.spacing = 20
+        let stackView = UIStackView(arrangedSubviews: [emailTextField, emailErrorLabel, passwordTextField, passwordErrorLabel, nameField, usernameField, signupBtn])
+        stackView.spacing = 15
         stackView.axis = .vertical
         
         view.addSubview(stackView)
@@ -109,6 +127,30 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         usernameField.addTarget(self, action: #selector(textChange), for: .editingChanged)
     }
     
+    func getMissingValidation(password: String) -> [String] {
+        var errors: [String] = []
+        if(!NSPredicate(format:"SELF MATCHES %@", ".*[A-Z]+.*").evaluate(with: password)){
+            errors.append("Password should contain least one uppercase")
+        }
+        
+        if(!NSPredicate(format:"SELF MATCHES %@", ".*[0-9]+.*").evaluate(with: password)){
+            errors.append("Password should contain least one digit")
+        }
+
+        if(!NSPredicate(format:"SELF MATCHES %@", ".*[!&^%$#@()/]+.*").evaluate(with: password)){
+            errors.append("Password should contain least one symbol")
+        }
+        
+        if(!NSPredicate(format:"SELF MATCHES %@", ".*[a-z]+.*").evaluate(with: password)){
+            errors.append("Password should contain least one lowercase")
+        }
+        
+        if(password.count < 8){
+            errors.append("Password should be minimun 8 characters")
+        }
+        return errors
+    }
+    
     
     //MARK: - Actions
     
@@ -118,23 +160,41 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
             
             if (!emailTextField.text!.contains("@")){
                 emailTextField.showError()
+                emailErrorLabel.text = "email should contain @"
+                emailErrorLabel.isHidden = false
+            } else if (emailTextField.text!.doesContainsWhiteSpace()){
+                emailTextField.showError()
+                emailErrorLabel.text = "email shouldn't contain white space"
+                emailErrorLabel.isHidden = false
             } else {
                 emailTextField.removeError()
+                emailErrorLabel.isHidden = true
             }
             
         } else if sender == passwordTextField {
             viewModel.password = sender.text
             
-            if (passwordTextField.text!.count < 6){
+            let error = getMissingValidation(password: passwordTextField.text!)
+            
+            if (error.count > 0){
                 passwordTextField.showError()
+                passwordErrorLabel.isHidden = false
+                passwordErrorLabel.text = error[0]
             } else {
                 passwordTextField.removeError()
+                passwordErrorLabel.isHidden = true
             }
             
         } else if sender == nameField {
             viewModel.name = sender.text
         } else {
             viewModel.username = sender.text
+            
+            if (usernameField.text!.doesContainsWhiteSpace()){
+                usernameField.showError()
+            } else {
+                usernameField.removeError()
+            }
         }
         
         signupBtn.backgroundColor = viewModel.btnBackgound

@@ -85,6 +85,7 @@ extension UITextField {
         layer.borderColor = UIColor.systemGray4.cgColor
         layer.borderWidth = 1
     }
+
 }
 
 //This extension is used to calculate the height of given String based on font and font size
@@ -101,6 +102,17 @@ extension String {
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
 
         return ceil(boundingBox.width)
+    }
+    
+    func doesContainsWhiteSpace() -> Bool {
+        let whitespace = NSCharacterSet.whitespaces
+        let range = self.rangeOfCharacter(from: whitespace)
+        
+        if range != nil {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
