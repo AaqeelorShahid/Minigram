@@ -241,25 +241,9 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     }
     
     @objc func addPictureBtnPressed() {
-        var imagePickerConfig = YPImagePickerConfiguration()
-        imagePickerConfig.library.mediaType = .photo
-        imagePickerConfig.library.maxNumberOfItems = 1
-        imagePickerConfig.startOnScreen = .library
-        imagePickerConfig.shouldSaveNewPicturesToAlbum = false
-        imagePickerConfig.hidesBottomBar = false
-        imagePickerConfig.screens = [.library]
-        imagePickerConfig.hidesBottomBar = false
-        
-        let imagePicker = YPImagePicker(configuration: imagePickerConfig)
-        imagePicker.modalPresentationStyle = .fullScreen
-        present(imagePicker, animated: true)
-        
-        finishedPickingThePhoto(imagePicker)
-        
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        
-        present(picker, animated: true)
+        Utils.openPhotoGallery(controller: self) { picker in
+            self.finishedPickingThePhoto(picker)
+        }
     }
     
     @objc func removeImage() {

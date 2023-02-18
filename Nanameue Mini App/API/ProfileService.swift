@@ -24,4 +24,13 @@ class ProfileService {
             completion(user)
         }
     }
+    
+    static func updateProfilePicture(image: UIImage, compeltion: @escaping (String) -> Void){
+        guard let uid = FirebaseAuth.Auth.auth().currentUser?.uid else {return}
+        ImageUploader.uploadImageToStorage(image: image, path: "/profile") { imageUrl in
+            COLLECTION_USERS.document(uid).updateData(["profileUrl": imageUrl])
+            compeltion(imageUrl)
+        }
+        
+    }
 }

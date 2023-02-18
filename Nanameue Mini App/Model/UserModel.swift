@@ -10,9 +10,9 @@ import Foundation
 struct UserModel {
     let email: String
     let name: String
-    let profileUrl: String
     let uid: String
     let username: String
+    var profileUrl: String
     
     init(dic: [String: Any]) {
         self.email = dic["email"] as? String ?? ""

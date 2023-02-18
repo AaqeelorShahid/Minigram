@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import YPImagePicker
 
 private let imageOnlyCellIdentifier = "image_post_cell"
 private let textOnlyCellIdentifier = "text_post_cell"
@@ -124,6 +125,21 @@ class ProfileController: UICollectionViewController {
             }
         }
     }
+    
+    
+    func finishedPickingThePhoto(_ picker: YPImagePicker){
+        picker.didFinishPicking { items, cancelled in
+            picker.dismiss(animated: true) {
+                self.showLoading(true, showText: false)
+                guard let image = items.singlePhoto?.image else {return}
+                ProfileService.updateProfilePicture(image: image) { imageUrl in
+                    self.model.profileUrl = imageUrl
+                    self.showLoading(false, showText: false)
+                }
+            }
+        }
+    }
+    
 }
 
 //MARK: - UICollectionViewDataSource
@@ -266,9 +282,13 @@ extension ProfileController: ProfileHeaderProtocol {
         if selectedBtn == OWN_POST_BUTTON {
             fetchPosts()
             enableMenuSatus = true
-        } else {
+        } else if selectedBtn == LIKED_POST_BUTTON {
             fetchAllPosts()
             enableMenuSatus = false
+        } else {
+            Utils.openPhotoGallery(controller: self) { picker in
+                self.finishedPickingThePhoto(picker)
+            }
         }
     }
 }

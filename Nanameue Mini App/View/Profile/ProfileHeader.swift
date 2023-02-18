@@ -173,7 +173,7 @@ class ProfileHeader: UICollectionReusableView {
     
 //    MARK: - Actions
     @objc func editProfileBtnPressed() {
-     
+        delegate?.cell(2)
     }
     
     @objc func postSectionBtnPressed() {

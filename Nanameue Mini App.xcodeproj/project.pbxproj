@@ -35,6 +35,7 @@
 		9073F24329969CE8003143B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24229969CE8003143B2 /* Assets.xcassets */; };
 		9073F24629969CE8003143B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9073F24429969CE8003143B2 /* LaunchScreen.storyboard */; };
 		909E008129A040D200879BA4 /* AuthenticationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E008029A040D200879BA4 /* AuthenticationModelTests.swift */; };
+		909E008829A0DDEA00879BA4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E008729A0DDEA00879BA4 /* Utils.swift */; };
 		90A5B7E4299D6A6900FB4F99 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E3299D6A6900FB4F99 /* PostService.swift */; };
 		90A5B7E6299D87EF00FB4F99 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E5299D87EF00FB4F99 /* PostModel.swift */; };
 		90A5B7E8299D8B9200FB4F99 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */; };
@@ -83,6 +84,7 @@
 		9073F24729969CE8003143B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		909E007E29A040D200879BA4 /* Nanameue Mini AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nanameue Mini AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		909E008029A040D200879BA4 /* AuthenticationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModelTests.swift; sourceTree = "<group>"; };
+		909E008729A0DDEA00879BA4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		90A5B7E3299D6A6900FB4F99 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		90A5B7E5299D87EF00FB4F99 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				904DB52629983A9E00704C08 /* Extensions.swift */,
 				903555ED299BEA3D008E34D5 /* Constants.swift */,
+				909E008729A0DDEA00879BA4 /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				90A5B7E8299D8B9200FB4F99 /* PostViewModel.swift in Sources */,
 				903555F6299C1EB4008E34D5 /* PostUploadController.swift in Sources */,
 				90A5B7E6299D87EF00FB4F99 /* PostModel.swift in Sources */,
+				909E008829A0DDEA00879BA4 /* Utils.swift in Sources */,
 				904DB52E2998FF7B00704C08 /* CustomTextField.swift in Sources */,
 				903555FA299C310D008E34D5 /* MultiLineInputTextView.swift in Sources */,
 				903555EE299BEA3D008E34D5 /* Constants.swift in Sources */,
