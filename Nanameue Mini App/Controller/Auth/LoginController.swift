@@ -138,7 +138,8 @@ class LoginController: UIViewController {
         AuthenticationService.loginUser(withEmail: email, password: password) { result, err in
             
             if let error = err {
-                print("Error: \(error.localizedDescription)")
+                print("Error - login: \(error.localizedDescription)")
+                self.showErrorMessage(showErorText: true, error: error.localizedDescription)
                 return
             }
             

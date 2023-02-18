@@ -35,6 +35,18 @@ extension UIViewController {
             UIViewController.hud.dismiss(animated: true)
         }
     }
+    
+    func showErrorMessage(showErorText: Bool, error: String? = nil){
+        UIViewController.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        UIViewController.hud.indicatorView?.tintColor = UIColor(named: "red_50_color")
+        
+        UIViewController.hud.show(in: view, animated: true)
+        if showErorText {
+            UIViewController.hud.textLabel.text = error
+        }
+        
+        UIViewController.hud.dismiss(afterDelay: 4.0)
+    }
 }
 
 extension UIButton {

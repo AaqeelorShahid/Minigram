@@ -223,6 +223,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
             PostService.uploadPostWithImage(postText: postText, user: user, postImage: postImage) { error in
                 if let error = error {
                     print ("error in uploading the post with image \(error)" )
+                    self.showErrorMessage(showErorText: true, error: error.localizedDescription)
                 }
                 
                 self.delegate?.controllerDidFinishTask(self)
@@ -231,6 +232,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
             PostService.uploadPost(postText: postText, user: user) { error in
                 if let error = error {
                     print ("error in uploading the post \(error)")
+                    self.showErrorMessage(showErorText: true, error: error.localizedDescription)
                 }
                 
                 self.delegate?.controllerDidFinishTask(self)

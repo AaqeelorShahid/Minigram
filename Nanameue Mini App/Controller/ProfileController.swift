@@ -111,6 +111,7 @@ class ProfileController: UICollectionViewController {
             PostService.unlikePost(post: post) { error in
                 if let error = error {
                     print("Error in unlike post api \(error)")
+                    self.showErrorMessage(showErorText: true, error: error.localizedDescription)
                 }
             }
 
@@ -118,6 +119,7 @@ class ProfileController: UICollectionViewController {
             PostService.likePost(post: post) { error in
                 if let error = error {
                     print("Error in like post api \(error)")
+                    self.showErrorMessage(showErorText: true, error: error.localizedDescription)
                 }
             }
         }
@@ -244,6 +246,7 @@ extension ProfileController: CommonFeedCellDelegate {
             PostService.removePost(withId: post.postId) { error in
                 if let error = error {
                     print ("Error in removing post: \(error)")
+                    self.showErrorMessage(showErorText: true, error: error.localizedDescription)
                 }
             }
             

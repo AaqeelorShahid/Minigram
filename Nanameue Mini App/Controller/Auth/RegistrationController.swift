@@ -220,6 +220,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         AuthenticationService.signupUser(withData: data) { err in
             if let error = err {
                 print("Failed error \(error.localizedDescription)")
+                self.showErrorMessage(showErorText: true, error: error.localizedDescription)
                 return
             }
             

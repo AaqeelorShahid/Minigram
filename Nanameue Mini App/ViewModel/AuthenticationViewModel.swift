@@ -24,7 +24,6 @@ struct LoginViewModel: AuthenticationViewModel {
     
     var isValid: Bool {
         return password?.isEmpty == false &&
-        isValidPassword(password: password!) == true &&
         email?.isEmpty == false &&
         email?.contains("@") != false &&
         email?.doesContainsWhiteSpace() == false
