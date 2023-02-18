@@ -130,8 +130,8 @@ class ProfileController: UICollectionViewController {
     func finishedPickingThePhoto(_ picker: YPImagePicker){
         picker.didFinishPicking { items, cancelled in
             picker.dismiss(animated: true) {
-                self.showLoading(true, showText: false)
                 guard let image = items.singlePhoto?.image else {return}
+                self.showLoading(true, showText: false)
                 ProfileService.updateProfilePicture(image: image) { imageUrl in
                     self.model.profileUrl = imageUrl
                     self.showLoading(false, showText: false)
