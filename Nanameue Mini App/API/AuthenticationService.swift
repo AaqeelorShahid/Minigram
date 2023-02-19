@@ -23,14 +23,14 @@ struct AuthenticationService {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
-    
-    static func signupUser(withData data: AuthData, completion: @escaping(Error?) -> Void ) {
+    static func signupUser(withData data: AuthData, completion: @escaping(Error?, Bool) -> Void ) {
         ImageUploader.uploadImageToStorage(image: data.profile, path: "/profile") { url in
             Auth.auth().createUser(withEmail: data.email, password: data.password){
                 (result, error) in
                 
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
+                    completion(error, false)
                     return
                 }
                 
@@ -41,8 +41,15 @@ struct AuthenticationService {
                                            "profileUrl": url,
                                            "uid": uid]
                 
-                Firestore.firestore().collection("users").document(uid).setData(data, completion: completion)
+                Firestore.firestore().collection("users").document(uid).setData(data){ error in
+                    if let error = error {
+                        completion(error, false)
+                        return
+                    }
+                    completion(error, true)
+                }
             }
         }
     }
+    
 }

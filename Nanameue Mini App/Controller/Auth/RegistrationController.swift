@@ -217,7 +217,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         let data = AuthData(email: email, password: password, name: name, username: username, profile: profileImage)
         showLoading(true, showText: false)
         
-        AuthenticationService.signupUser(withData: data) { err in
+        AuthenticationService.signupUser(withData: data) { err, status in
             if let error = err {
                 print("Failed error \(error.localizedDescription)")
                 self.showErrorMessage(showErorText: true, error: error.localizedDescription)

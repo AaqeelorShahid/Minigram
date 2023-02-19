@@ -264,7 +264,7 @@ extension PostUploadController: UITextViewDelegate {
         checkTextViewLength(textView, maxLength: textPostLimit)
         textLengthCount.text = "\(textView.text.count)/\(textPostLimit)"
         
-        if (textView.text.count > 0){
+        if (textView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0){
             handlePostBtnState(true)
         } else {
             handlePostBtnState(false)
