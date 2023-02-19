@@ -46,7 +46,7 @@ Check out Minigram app in action below
 ### Feed / Timeline
 
 
-![Alt Text](https://s9.gifyu.com/images/2d40bbb7e0e2627ba.gif)
+![Alt Text](https://s3.gifyu.com/images/newaaaa.gif)
 
 
 ### Post maker
@@ -58,7 +58,7 @@ Check out Minigram app in action below
 ### Profile Section
 
 
-![Alt Text](https://s3.gifyu.com/images/4aefdc9d9b6c39fd4.gif)
+![Alt Text](https://s3.gifyu.com/images/new_profile_gif.gif)
 
 
 
