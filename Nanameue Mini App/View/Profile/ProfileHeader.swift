@@ -40,7 +40,7 @@ class ProfileHeader: UICollectionReusableView {
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .light)
-        label.textColor = .systemGray2
+        label.textColor = UIColor(named: "lite_gray_2")
         label.textAlignment = .center
         label.numberOfLines = 1
         return label
@@ -74,7 +74,7 @@ class ProfileHeader: UICollectionReusableView {
     
     private lazy var postSectionButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "square.on.square.intersection.dashed"), for: .normal)
+        button.setImage(UIImage(systemName: "square.on.square"), for: .normal)
         button.setTitle("Posts", for: .normal)
         button.tintColor = UIColor(named: "main_color")
         button.setTitleColor(.black, for: .normal)
@@ -89,7 +89,7 @@ class ProfileHeader: UICollectionReusableView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .systemGray6
+        imageView.backgroundColor = UIColor(named: "lite_gray")
         return imageView
     }()
     
@@ -97,7 +97,7 @@ class ProfileHeader: UICollectionReusableView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .systemGray6
+        imageView.backgroundColor = UIColor(named: "lite_gray")
         return imageView
     }()
     
@@ -148,7 +148,7 @@ class ProfileHeader: UICollectionReusableView {
     func attributedText(value: Int, label: String) -> NSAttributedString {
         let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
         
-        attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
+        attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.gray]))
         
         return attributedText
     }

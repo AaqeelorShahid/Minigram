@@ -18,7 +18,7 @@ class MultiLineInputTextView: UITextView {
     
     private let placeHolderLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemGray3
+        label.textColor = UIColor(named: "lite_gray_2")
         label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()

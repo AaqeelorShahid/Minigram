@@ -24,10 +24,10 @@ class CustomTextField: UITextField {
         autocapitalizationType = .none
         
         layer.cornerRadius = 12
-        layer.borderColor = UIColor.systemGray4.cgColor
+        layer.borderColor = UIColor(named: "lite_gray_2")!.cgColor
         layer.borderWidth = 1
         
-        attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [.foregroundColor: UIColor.systemGray])
+        attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [.foregroundColor: UIColor(named: "lite_gray_2")])
     }
     
     required init?(coder: NSCoder) {

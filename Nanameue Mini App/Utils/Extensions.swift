@@ -47,11 +47,11 @@ extension UIViewController {
 
 extension UIButton {
     func attributedText(firstString: String, secondString: String){
-        let attribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray2, .font: UIFont.systemFont(ofSize: 16)]
+        let attribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.lightGray, .font: UIFont.systemFont(ofSize: 16)]
         
         let attributedFirstText = NSMutableAttributedString(string: firstString, attributes: attribute)
         
-        let boldAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray, .font: UIFont.boldSystemFont(ofSize: 16)]
+        let boldAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray, .font: UIFont.boldSystemFont(ofSize: 16)]
         
         attributedFirstText.append(NSMutableAttributedString(string: secondString, attributes: boldAttribute))
        
@@ -90,7 +90,7 @@ extension UITextField {
     func removeError() {
         borderStyle = .none
         layer.cornerRadius = 12
-        layer.borderColor = UIColor.systemGray4.cgColor
+        layer.borderColor = UIColor(named: "lite_gray_2")!.cgColor
         layer.borderWidth = 1
     }
 

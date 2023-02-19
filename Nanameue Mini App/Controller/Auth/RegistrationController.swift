@@ -260,7 +260,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         profileImageView.layer.masksToBounds = true
         profileImageView.layer.borderWidth = 2
-        profileImageView.layer.borderColor = UIColor.systemGray2.cgColor
+        profileImageView.layer.borderColor = UIColor(named: "lite_gray_2")?.cgColor
         profileImageView.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
         
         self.dismiss(animated: true)

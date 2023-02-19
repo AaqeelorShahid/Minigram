@@ -70,6 +70,8 @@ class MainTabController: UITabBarController {
         
         viewControllers = [feed, postMaker, profile]
         tabBar.tintColor = .black
+        tabBar.backgroundColor = .white
+        tabBar.barTintColor = .white
         tabBar.isTranslucent = false
     }
     
@@ -77,7 +79,6 @@ class MainTabController: UITabBarController {
         let nav = UINavigationController(rootViewController: viewController)
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
-        nav.navigationBar.tintColor = .black
         return nav
     }
 }

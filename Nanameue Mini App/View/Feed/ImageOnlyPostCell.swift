@@ -68,7 +68,7 @@ class ImageOnlyPostCell: UICollectionViewCell {
     
     private let likeCountText: UILabel = {
         let label = UILabel()
-        label.textColor = .systemGray2
+        label.textColor = UIColor(named: "lite_gray_2")
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = -1
         return label
@@ -76,7 +76,7 @@ class ImageOnlyPostCell: UICollectionViewCell {
     
     private let postedTimeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemGray2
+        label.textColor = UIColor(named: "lite_gray_2")
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = -1
         return label
@@ -86,7 +86,7 @@ class ImageOnlyPostCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .systemGray6
+        imageView.backgroundColor = UIColor(named: "lite_gray")
         return imageView
     }()
     

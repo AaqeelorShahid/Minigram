@@ -36,6 +36,7 @@ class MainFeedController: UICollectionViewController {
         collectionView.backgroundColor = .white
         
         navigationItem.title = "Minigram"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
         
         collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: postCellIdentifier)

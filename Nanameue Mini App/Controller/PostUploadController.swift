@@ -77,6 +77,8 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
         textField.placeHolderText = "What's happening?"
         textField.font = UIFont.systemFont(ofSize: 17)
         textField.delegate = self
+        textField.backgroundColor = .white
+        textField.textColor = .black
         return textField
     }()
     
@@ -93,7 +95,7 @@ class PostUploadController: UIViewController, UIPickerViewDelegate {
     
     private lazy var textLengthCount: UILabel = {
         let label = UILabel()
-        label.textColor = .systemGray2
+        label.textColor = UIColor(named: "lite_gray_2")
         label.font = UIFont.systemFont(ofSize: 15)
         label.text = "0/\(textPostLimit)"
         return label
