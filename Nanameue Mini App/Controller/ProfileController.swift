@@ -46,6 +46,9 @@ class ProfileController: UICollectionViewController {
     
     override func viewDidLoad() {
         initUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchPosts()
     }
     

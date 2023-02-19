@@ -17,5 +17,117 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2C415D8-5FE4-4CF9-8C9F-29FBE2CB935C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nanameue Mini App/Controller/ProfileController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "finishedPickingThePhoto(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B2C415D8-5FE4-4CF9-8C9F-29FBE2CB935C - afccd4631801c450"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nanameue_Mini_App.ProfileController.finishedPickingThePhoto(YPImagePicker.YPImagePicker) -&gt; ()"
+                  moduleName = "Nanameue Mini App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shahid.aaqeel/Documents/Minigram/Nanameue%20Mini%20App/Controller/ProfileController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "B2C415D8-5FE4-4CF9-8C9F-29FBE2CB935C - fcc284c8c5e61881"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;YPImagePicker.YPMediaItem&gt;, Swift.Bool) -&gt; () in Nanameue_Mini_App.ProfileController.finishedPickingThePhoto(YPImagePicker.YPImagePicker) -&gt; ()"
+                  moduleName = "Nanameue Mini App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shahid.aaqeel/Documents/Minigram/Nanameue%20Mini%20App/Controller/ProfileController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B464EBD-4ACB-42EF-973B-2F3ECB3A90CE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nanameue Mini App/Controller/ProfileController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "finishedPickingThePhoto(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2B464EBD-4ACB-42EF-973B-2F3ECB3A90CE - 824a70776df1c183"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Array&lt;YPImagePicker.YPMediaItem&gt;, Swift.Bool) -&gt; () in Nanameue_Mini_App.ProfileController.finishedPickingThePhoto(YPImagePicker.YPImagePicker) -&gt; ()"
+                  moduleName = "Nanameue Mini App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shahid.aaqeel/Documents/Minigram/Nanameue%20Mini%20App/Controller/ProfileController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "2B464EBD-4ACB-42EF-973B-2F3ECB3A90CE - f44dd8aa4d9831b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in closure #1 (Swift.Array&lt;YPImagePicker.YPMediaItem&gt;, Swift.Bool) -&gt; () in Nanameue_Mini_App.ProfileController.finishedPickingThePhoto(YPImagePicker.YPImagePicker) -&gt; ()"
+                  moduleName = "Nanameue Mini App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shahid.aaqeel/Documents/Minigram/Nanameue%20Mini%20App/Controller/ProfileController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7DC6B021-DF2D-4662-8CD4-D1FC058BCB81"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nanameue Mini App/Controller/ProfileController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "finishedPickingThePhoto(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

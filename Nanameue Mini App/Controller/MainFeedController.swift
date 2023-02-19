@@ -17,7 +17,9 @@ class MainFeedController: UICollectionViewController {
     
     //MARK: - Properties
     private var posts = [PostModel]() {
-        didSet { collectionView.reloadData() }
+        didSet {
+            collectionView.reloadData()
+        }
     }
     
     //MARK: - Lifecycle
@@ -90,19 +92,13 @@ class MainFeedController: UICollectionViewController {
                 if let error = error {
                     print("Error in unlike post api \(error)")
                 }
-                
-                
             }
-            //Set unlike animation to the button here
-
         } else {
             PostService.likePost(post: post) { error in
                 if let error = error {
                     print("Error in like post api \(error)")
                 }
             }
-            
-            //Set liked animation to the button here
         }
     }
 }
