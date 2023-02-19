@@ -30,6 +30,15 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         return button
     }()
     
+    private lazy var plusImage: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.tintColor = .black
+        button.tintColor = UIColor(named: "sub_color")
+        button.addTarget(self, action: #selector(profileSelectionBtn), for: .touchUpInside)
+        return button
+    }()
+    
     private let emailTextField: UITextField = {
         let textField = CustomTextField(placeholderText: "Email")
         textField.keyboardType = .emailAddress
@@ -105,6 +114,10 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
         profileImageView.setDimensions(height: 100, width: 100)
         profileImageView.centerX(inView: view)
         profileImageView.anchor(top: titleLabel.bottomAnchor, paddingTop: 20)
+        
+        view.addSubview(plusImage)
+        plusImage.setDimensions(height: 60, width: 60)
+        plusImage.anchor(bottom: profileImageView.bottomAnchor, right: profileImageView.rightAnchor, paddingBottom: -15, paddingRight: -35)
         
         let stackView = UIStackView(arrangedSubviews: [emailTextField, emailErrorLabel, passwordTextField, passwordErrorLabel, nameField, usernameField, signupBtn])
         stackView.spacing = 15
