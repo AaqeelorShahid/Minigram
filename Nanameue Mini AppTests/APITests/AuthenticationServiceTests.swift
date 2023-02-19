@@ -52,9 +52,11 @@ final class AuthenticationServiceTests: XCTestCase {
         let exp2 = self.expectation(description: "Waiting for async operation to finish - exp 2")
         let exp3 = self.expectation(description: "Waiting for async operation to finish - exp 3")
         
+        guard let profileImage = UIImage(named: "profile_placeholder") else {return}
+        
         //Random fake email and Random passwords are used only for testing purpose
-        var data = AuthData(email: randomFakeEmail(), password: randomFakePassword(), name: "Test User", username: "test.user", profile: UIImage(named: "profile_placeholder")!)
-        var expectedResult = true
+        let data = AuthData(email: randomFakeEmail(), password: randomFakePassword(), name: "Test User", username: "test.user", profile: profileImage)
+        let expectedResult = true
         
         // Test Sign up with correct auth credentials
         XCTContext.runActivity(named: "Proper working sign up") { _ in
@@ -66,8 +68,8 @@ final class AuthenticationServiceTests: XCTestCase {
         
         
 //        // Test Sign up with incorrect auth credentials  - incorrectEmail
-        var data2 = AuthData(email: "incorrectEmail", password: "Password@123", name: "Test User", username: "test.user2", profile: UIImage(named: "profile_placeholder")!)
-        var expectedResult2 = false
+        let data2 = AuthData(email: "incorrectEmail", password: "Password@123", name: "Test User", username: "test.user2", profile: profileImage)
+        let expectedResult2 = false
 
         XCTContext.runActivity(named: "Sign up with incorrect email") { _ in
             AuthenticationService.signupUser(withData: data2) { error, actualResult in
@@ -81,8 +83,8 @@ final class AuthenticationServiceTests: XCTestCase {
         
 
 //        // Test Sign up with existing email/user
-        var data3 = AuthData(email: "shahid@gmail.com", password: "password", name: "Test User", username: "test.user3", profile: UIImage(named: "profile_placeholder")!)
-        var expectedResult3 = false
+        let data3 = AuthData(email: "shahid@gmail.com", password: "password", name: "Test User", username: "test.user3", profile: profileImage)
+        let expectedResult3 = false
 
         XCTContext.runActivity(named: "Sign up with existing user email") { _ in
             AuthenticationService.signupUser(withData: data3) { error, actualResult in

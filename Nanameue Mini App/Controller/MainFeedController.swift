@@ -47,7 +47,7 @@ class MainFeedController: UICollectionViewController {
     
     func fetchPosts() {
         showLoading(true, showText: false)
-        PostService.fetchPosts { posts in
+        PostService.fetchPosts { posts, error in
             self.posts = posts
             self.checkUsedLikedOrNot()
             self.showLoading(false, showText: false)
@@ -57,7 +57,7 @@ class MainFeedController: UICollectionViewController {
     
     func checkUsedLikedOrNot() {
         self.posts.forEach { item in
-            PostService.checkUserLikedOrNot(post: item) { likeStatus in
+            PostService.checkUserLikedOrNot(post: item) { likeStatus, error in
                 if let currentIndex = self.posts.firstIndex(where: {$0.postId == item.postId}){
                     self.posts[currentIndex].didLike = likeStatus
                 }

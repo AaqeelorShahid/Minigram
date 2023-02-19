@@ -10,6 +10,9 @@ import FirebaseFirestore
 @testable import Nanameue_Mini_App
 
 final class ProfileServiceTests: XCTestCase {
+    
+    // !!! Please Login into the app before doing this test !!!
+    ///     Since It requires user uid - please login
 
     func testFetchUserData() {
         let exp = self.expectation(description: "Waiting for async operation to finish - exp")
@@ -26,11 +29,11 @@ final class ProfileServiceTests: XCTestCase {
     
     func testProfilePictureUpdate() {
         let exp = self.expectation(description: "Waiting for async operation to finish - exp")
-        let exp2 = self.expectation(description: "Waiting for async operation to finish - exp 2")
         
         // Test whether profile picture getting updated in the DB
         let expectedResult = false
-        ProfileService.updateProfilePicture(image: UIImage(named: "profile")!) { result, error in
+        guard let testProfilePicture = UIImage(named: "test_profile") else {return}
+        ProfileService.updateProfilePicture(image: testProfilePicture) { result, error in
             XCTAssertEqual(result.isEmpty, expectedResult)
             exp.fulfill()
         }

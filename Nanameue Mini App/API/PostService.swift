@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
-import FirebaseAuth
+import FirebaseAuth 
 
 struct PostService {
     
@@ -38,41 +38,39 @@ struct PostService {
         COLLECTION_POST.addDocument(data: data, completion: completion)
     }
     
-    static func fetchPosts(completion: @escaping ([PostModel]) -> Void) {
-        COLLECTION_POST.order(by: "timeStamp", descending: true).getDocuments { snapshot, err in
+    static func fetchPosts(completion: @escaping ([PostModel], Error?) -> Void) {
+        COLLECTION_POST.order(by: "timeStamp", descending: true).getDocuments { snapshot, error in
             guard let docs = snapshot?.documents else {return}
-            
             let posts = docs.map({ PostModel(postId: $0.documentID, dic: $0.data())})
-            completion(posts)
+            
+            completion(posts, error)
         }
     }
     
-    static func fetchPosts(forUser userId: String, completion: @escaping ([PostModel]) -> Void) {
+    static func fetchPosts(forUser userId: String, completion: @escaping ([PostModel], Error?) -> Void) {
         COLLECTION_POST
             .whereField("postedBy", isEqualTo: userId)
             .getDocuments {
                 snapshot, error in
                 
-                guard let docs = snapshot?.documents else {return}
                 if let error = error {
                     print ("error in \(error)")
                 }
                 
+                guard let docs = snapshot?.documents else {return}
                 var posts = docs.map({ PostModel(postId: $0.documentID, dic: $0.data())})
             
                 posts.sort{ (post1, post2) -> Bool in
                     return post1.timeStamp.seconds > post2.timeStamp.seconds
                 }
                 
-                completion(posts)
+                completion(posts, error)
             }
     }
     
     static func removePost(withId postId: String, completion: @escaping FirestoreCompletion) {
         COLLECTION_POST.document(postId).delete() { error in
-            if let error = error {
-                completion(error)
-            }
+            completion(error)
         }
     }
     
@@ -96,18 +94,19 @@ struct PostService {
             COLLECTION_USERS.document(uid).collection("liked-posts").document(post.postId).delete(completion: completion)
         }
     }
-    
-    static func checkUserLikedOrNot(post: PostModel, completion: @escaping(Bool) -> Void) {
+     
+    static func checkUserLikedOrNot(post: PostModel, completion: @escaping(Bool, Error?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         
         COLLECTION_USERS.document(uid).collection("liked-posts").document(post.postId).getDocument() { snapshot, error in
             
             if let error = error {
                 print ("error in like check \(error)")
+                return
             }
             guard let likeStatus = snapshot?.exists else {return}
             
-            completion(likeStatus)
+            completion(likeStatus, error)
         }
     }
     

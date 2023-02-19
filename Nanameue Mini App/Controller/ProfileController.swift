@@ -66,7 +66,7 @@ class ProfileController: UICollectionViewController {
         let uid = Auth.auth().currentUser?.uid
         guard let userId = uid else {return}
         showLoading(true, showText: false)
-        PostService.fetchPosts(forUser: userId) { posts in
+        PostService.fetchPosts(forUser: userId) { posts, error in
             self.posts = posts
             self.checkUsedLikedOrNot()
             self.showLoading(false, showText: false)
@@ -75,7 +75,7 @@ class ProfileController: UICollectionViewController {
     
     func checkUsedLikedOrNot() {
         self.posts.forEach { item in
-            PostService.checkUserLikedOrNot(post: item) { likeStatus in
+            PostService.checkUserLikedOrNot(post: item) { likeStatus, error in
                 if let currentIndex = self.posts.firstIndex(where: {$0.postId == item.postId}){
                     self.posts[currentIndex].didLike = likeStatus
                 }
@@ -85,7 +85,7 @@ class ProfileController: UICollectionViewController {
     
     func fetchAllPosts() {
         showLoading(true, showText: true, description: "This might take several seconds")
-        PostService.fetchPosts() { posts in
+        PostService.fetchPosts() { posts, error in
             self.posts = posts
             self.fetchAllLikedPosts()
         }
@@ -93,7 +93,7 @@ class ProfileController: UICollectionViewController {
     
     func fetchAllLikedPosts() {
         if index < self.posts.count {
-            PostService.checkUserLikedOrNot(post: self.posts[index]) { likeStatus in
+            PostService.checkUserLikedOrNot(post: self.posts[index]) { likeStatus, error in
                 if likeStatus {
                     self.posts[self.index].didLike = true
                     self.likedPosts.append(self.posts[self.index])
