@@ -80,7 +80,7 @@ class LoginController: UIViewController {
         view.addSubview(iconImageView)
         iconImageView.centerX(inView: view)
         iconImageView.setDimensions(height: 50, width: 50)
-        iconImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 16)
+        iconImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 24)
         
         view.addSubview(titleLabel)
         titleLabel.anchor(top: iconImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 48, paddingLeft: 16, paddingRight: 16)
