@@ -185,6 +185,9 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
                     passwordTextField.showError()
                     passwordErrorLabel.isHidden = false
                     passwordErrorLabel.text = error[0]
+                } else {
+                    passwordTextField.removeError()
+                    passwordErrorLabel.isHidden = true
                 }
             } else {
                 passwordTextField.removeError()

@@ -8,7 +8,6 @@
 import FirebaseFirestore
 
 struct PostModel {
-
     let postId: String
     let timeStamp: Timestamp
     let profilePicture: String

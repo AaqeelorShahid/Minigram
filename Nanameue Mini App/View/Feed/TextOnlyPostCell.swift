@@ -13,7 +13,7 @@ class TextOnlyPostCell: UICollectionViewCell {
     //MARK: - Properties
     
     weak var delegate: CommonFeedCellDelegate?
-    
+
     var postViewModel: PostViewModel? {
         didSet {configureCell()}
     }
