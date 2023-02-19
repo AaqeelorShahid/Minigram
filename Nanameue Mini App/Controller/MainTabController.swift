@@ -41,7 +41,7 @@ class MainTabController: UITabBarController {
     }
     
     func fetchUserData() {
-        ProfileService.fetchUserData { userData in
+        ProfileService.fetchUserData { userData, status in
             self.model = userData
         }
     }

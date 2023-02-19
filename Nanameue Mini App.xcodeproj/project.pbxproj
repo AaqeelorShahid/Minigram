@@ -37,6 +37,7 @@
 		909E008129A040D200879BA4 /* AuthenticationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E008029A040D200879BA4 /* AuthenticationModelTests.swift */; };
 		909E008829A0DDEA00879BA4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E008729A0DDEA00879BA4 /* Utils.swift */; };
 		909E008A29A0EB3100879BA4 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E008929A0EB3100879BA4 /* AuthenticationServiceTests.swift */; };
+		909E008F29A1A13A00879BA4 /* ProfileServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E008E29A1A13A00879BA4 /* ProfileServiceTests.swift */; };
 		90A5B7E4299D6A6900FB4F99 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E3299D6A6900FB4F99 /* PostService.swift */; };
 		90A5B7E6299D87EF00FB4F99 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E5299D87EF00FB4F99 /* PostModel.swift */; };
 		90A5B7E8299D8B9200FB4F99 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */; };
@@ -87,6 +88,7 @@
 		909E008029A040D200879BA4 /* AuthenticationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModelTests.swift; sourceTree = "<group>"; };
 		909E008729A0DDEA00879BA4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		909E008929A0EB3100879BA4 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
+		909E008E29A1A13A00879BA4 /* ProfileServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileServiceTests.swift; sourceTree = "<group>"; };
 		90A5B7E3299D6A6900FB4F99 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		90A5B7E5299D87EF00FB4F99 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		90A5B7E7299D8B9200FB4F99 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				909E008929A0EB3100879BA4 /* AuthenticationServiceTests.swift */,
+				909E008E29A1A13A00879BA4 /* ProfileServiceTests.swift */,
 			);
 			path = APITests;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				909E008129A040D200879BA4 /* AuthenticationModelTests.swift in Sources */,
+				909E008F29A1A13A00879BA4 /* ProfileServiceTests.swift in Sources */,
 				909E008A29A0EB3100879BA4 /* AuthenticationServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

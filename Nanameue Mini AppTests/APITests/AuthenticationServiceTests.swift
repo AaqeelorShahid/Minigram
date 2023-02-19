@@ -19,22 +19,27 @@ final class AuthenticationServiceTests: XCTestCase {
         // Test Login with proper/correct email and password
         var email = "asna@gmail.com"
         var password = "password"
-        AuthenticationService.loginUser(withEmail: email, password: password) { result, error in
-            let expectedResult = email
-            let actualResult = result?.user.email
-            XCTAssertEqual(actualResult, expectedResult)
-            
-            exp.fulfill()
+        
+        XCTContext.runActivity(named: "Sign in with correct credential ") { _ in
+            AuthenticationService.loginUser(withEmail: email, password: password) { result, error in
+                let expectedResult = email
+                let actualResult = result?.user.email
+                XCTAssertEqual(actualResult, expectedResult)
+                
+                exp.fulfill()
+            }
         }
         
         
         // Test Login with incorrect email and password
-        email = "asna@gmail.com"
+        email = "asnaaa@gmail.com"
         password = "password111"
-        AuthenticationService.loginUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                XCTAssertNotNil(error)
-                exp2.fulfill()
+        XCTContext.runActivity(named: "Sign in with incorrect email and password") { _ in
+            AuthenticationService.loginUser(withEmail: email, password: password) { result, error in
+                if let error = error {
+                    XCTAssertNotNil(error)
+                    exp2.fulfill()
+                }
             }
         }
         
