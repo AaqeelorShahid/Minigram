@@ -157,15 +157,19 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
     @objc func textChange(sender: UITextField){
         if sender == emailTextField {
             viewModel.email = sender.text
-            
-            if (!emailTextField.text!.contains("@")){
-                emailTextField.showError()
-                emailErrorLabel.text = "email should contain @"
-                emailErrorLabel.isHidden = false
-            } else if (emailTextField.text!.doesContainsWhiteSpace()){
-                emailTextField.showError()
-                emailErrorLabel.text = "email shouldn't contain white space"
-                emailErrorLabel.isHidden = false
+            if (!emailTextField.text!.isEmpty) {
+                if (!emailTextField.text!.contains("@")){
+                    emailTextField.showError()
+                    emailErrorLabel.text = "email should contain @"
+                    emailErrorLabel.isHidden = false
+                } else if (emailTextField.text!.doesContainsWhiteSpace()){
+                    emailTextField.showError()
+                    emailErrorLabel.text = "email shouldn't contain white space"
+                    emailErrorLabel.isHidden = false
+                } else {
+                    emailTextField.removeError()
+                    emailErrorLabel.isHidden = true
+                }
             } else {
                 emailTextField.removeError()
                 emailErrorLabel.isHidden = true
@@ -176,14 +180,17 @@ class RegistrationController: UIViewController, UIPickerViewDelegate{
             
             let error = getMissingValidation(password: passwordTextField.text!)
             
-            if (error.count > 0){
-                passwordTextField.showError()
-                passwordErrorLabel.isHidden = false
-                passwordErrorLabel.text = error[0]
+            if (!passwordTextField.text!.isEmpty){
+                if (error.count > 0){
+                    passwordTextField.showError()
+                    passwordErrorLabel.isHidden = false
+                    passwordErrorLabel.text = error[0]
+                }
             } else {
                 passwordTextField.removeError()
                 passwordErrorLabel.isHidden = true
             }
+            
             
         } else if sender == nameField {
             viewModel.name = sender.text
